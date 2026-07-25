@@ -18,6 +18,17 @@ from bs4 import BeautifulSoup, Tag
 YEAR_RE = re.compile(r"(?:19|20)\d{2}")
 
 
+def _primary_text(el: Tag) -> str:
+    """Some any--en/any--ja elements (e.g. band page <h1> titles) wrap the actual name
+    link *plus* a sibling `.any--weaken` subtitle/alt-name div inside the same element
+    (seen on bands with a stylized subtitle, e.g. "LIN -the end of corruption world-").
+    Prefer the nested link's own text so that subtitle doesn't get concatenated in."""
+    link = el.find("a")
+    if link is not None:
+        return link.get_text(strip=True)
+    return el.get_text(strip=True)
+
+
 def bilingual_text(tag: Tag | None) -> tuple[str, str | None]:
     """Extract (romaji_name, native_name) from a tag using the any--en/any--ja convention.
     Falls back to the tag's plain text (native=None) when neither is present."""
@@ -26,11 +37,11 @@ def bilingual_text(tag: Tag | None) -> tuple[str, str | None]:
     en_el = tag.find(class_="any--en")
     if en_el is None:
         return tag.get_text(strip=True), None
-    name = en_el.get_text(strip=True)
+    name = _primary_text(en_el)
     native = None
     ja_el = tag.find(class_="any--ja")
     if ja_el is not None:
-        native_text = ja_el.get_text(strip=True).strip("() ").strip()
+        native_text = _primary_text(ja_el).strip("() ").strip()
         if native_text and native_text != name:
             native = native_text
     return name, native

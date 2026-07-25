@@ -112,16 +112,22 @@ def build_graph(state: CrawlState, source_base_url: str) -> dict:
             })
         career.sort(key=lambda c: c["era_index"])
 
+        # Consecutive eras can land on the *same* band (e.g. a numbering gap from a
+        # skipped/irregular era in between, or a genuine same-band re-run) - that's not a
+        # transition to anywhere, so skip generating a self-loop edge for it. Both career
+        # entries themselves are kept; only the pointless edge between them is dropped.
         edge_ids = []
         for i in range(len(career) - 1):
-            edge_id = f"e-{_slugify(url)}-{i}"
+            if career[i]["band_id"] == career[i + 1]["band_id"]:
+                continue
+            edge_id = f"e-{_slugify(url)}-{len(edge_ids)}"
             edge_ids.append(edge_id)
             edges.append({
                 "id": edge_id,
                 "musician_id": musician_id,
                 "source": career[i]["band_id"],
                 "target": career[i + 1]["band_id"],
-                "sequence_index": i,
+                "sequence_index": len(edge_ids) - 1,
                 "from_year": career[i + 1]["start_year"],
                 "concurrent": False,
             })

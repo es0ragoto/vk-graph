@@ -1,43 +1,36 @@
 import type { GraphIndex } from './graphIndex';
 
-/** Seeds the initial view with the highest-degree band plus its direct neighbors, so the first paint isn't an isolated dot. */
-export function initialVisibleBandIds(index: GraphIndex): Set<string> {
-  let seed: string | null = null;
-  let bestDegree = -1;
-  for (const [bandId, neighbors] of index.neighborBandIds) {
-    if (neighbors.size > bestDegree) {
-      bestDegree = neighbors.size;
-      seed = bandId;
+/** Returns the *same* Set reference when nothing new would be added, so callers relying on
+ * referential equality (React state, useMemo/useEffect deps) can skip pointless downstream
+ * recomputation - e.g. re-clicking an already-fully-visible band shouldn't retrigger layout. */
+function withAdded(visible: Set<string>, idsToAdd: Iterable<string>): Set<string> {
+  let next: Set<string> | null = null;
+  for (const id of idsToAdd) {
+    if (!visible.has(id)) {
+      if (!next) next = new Set(visible);
+      next.add(id);
     }
   }
-
-  const result = new Set<string>();
-  if (seed) {
-    result.add(seed);
-    for (const n of index.neighborBandIds.get(seed) ?? []) result.add(n);
-  } else {
-    const first = index.bandsById.keys().next();
-    if (!first.done) result.add(first.value);
-  }
-  return result;
+  return next ?? visible;
 }
 
 export function expandWithBandNeighbors(visible: Set<string>, bandId: string, index: GraphIndex): Set<string> {
-  const next = new Set(visible);
-  next.add(bandId);
-  for (const n of index.neighborBandIds.get(bandId) ?? []) next.add(n);
-  return next;
+  return withAdded(visible, [bandId, ...(index.neighborBandIds.get(bandId) ?? [])]);
 }
 
 export function expandWithMusicianPath(visible: Set<string>, musicianId: string, index: GraphIndex): Set<string> {
-  const next = new Set(visible);
   const musician = index.musiciansById.get(musicianId);
-  if (musician) {
-    for (const stop of musician.career) next.add(stop.band_id);
-  }
-  return next;
+  if (!musician) return visible;
+  return withAdded(visible, musician.career.map((c) => c.band_id));
 }
 
-export function allBandIds(index: GraphIndex): Set<string> {
-  return new Set(index.bandsById.keys());
+/** "Entire graph" means the real, fully-crawled bands - not every stub pulled in as a
+ * career-path endpoint for some musician (which can vastly outnumber the real set).
+ * Stubs still surface contextually via expandWithMusicianPath when a path leads to one. */
+export function allRealBandIds(index: GraphIndex): Set<string> {
+  const result = new Set<string>();
+  for (const [id, band] of index.bandsById) {
+    if (!band.stub) result.add(id);
+  }
+  return result;
 }

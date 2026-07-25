@@ -15,12 +15,15 @@ const EMPTY_HIGHLIGHTS: HighlightSets = {
   fadeOthers: false,
 };
 
-/** Bands only highlight themselves; musicians highlight (and fade around) their whole career path. */
+/** Bands highlight themselves plus every incoming/outgoing edge, in place (no fade, no
+ * camera movement - see GraphView, which only re-fits the camera when fadeOthers is set).
+ * Musicians highlight (and fade around, and re-center on) their whole career path. */
 export function computeHighlights(selection: Selection, index: GraphIndex): HighlightSets {
   if (!selection) return EMPTY_HIGHLIGHTS;
 
   if (selection.type === 'band') {
-    return { highlightedBandIds: new Set([selection.id]), highlightedEdgeIds: new Set(), fadeOthers: false };
+    const edgeIds = index.edgeIdsByBand.get(selection.id) ?? new Set<string>();
+    return { highlightedBandIds: new Set([selection.id]), highlightedEdgeIds: new Set(edgeIds), fadeOthers: false };
   }
 
   const musician = index.musiciansById.get(selection.id);

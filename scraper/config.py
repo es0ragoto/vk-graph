@@ -14,7 +14,7 @@ DEFAULT_WARNINGS_FILE = SCRAPER_DIR / "output" / "warnings.json"
 SECRETS_PATH = SCRAPER_DIR / ".secrets.json"
 
 DEFAULT_BASE_URL = "https://vk.gy"
-DEFAULT_MAX_BANDS = 100
+DEFAULT_MAX_BANDS = 200
 # Gentle by default - random delay range, not a fixed interval. Fine to wait; not in a hurry.
 DEFAULT_MIN_DELAY = 3.0
 DEFAULT_MAX_DELAY = 8.0

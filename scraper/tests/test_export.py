@@ -10,7 +10,7 @@ def make_state() -> CrawlState:
         "https://vk.gy/artists/a/", "https://vk.gy/artists/b/", "https://vk.gy/artists/c/",
     }
     state.referenced_musician_urls = {
-        "https://vk.gy/musicians/1/alice/", "https://vk.gy/musicians/2/bob/",
+        "https://vk.gy/musicians/1/alice/", "https://vk.gy/musicians/2/bob/", "https://vk.gy/musicians/3/carol/",
     }
     state.bands = {
         "https://vk.gy/artists/a/": {
@@ -53,6 +53,23 @@ def make_state() -> CrawlState:
             "bio": None, "usual_position": "drums",
             "career": [
                 {"era_index": 1, "band_name": "Band B", "band_url": "https://vk.gy/artists/b/",
+                 "instrument": None, "start_year": None, "end_year": None},
+            ],
+        },
+        # Mirrors a real pattern (e.g. KISAKI's two Phantasmagoria stints, era 12 and 14,
+        # with era 13 an irregular-project-only gap): consecutive career entries land on
+        # the *same* band. That must not produce a self-loop edge.
+        "https://vk.gy/musicians/3/carol/": {
+            "name": "Carol", "name_native": None, "url": "https://vk.gy/musicians/3/carol/",
+            "bio": None, "usual_position": "vocals",
+            "career": [
+                {"era_index": 1, "band_name": "Band A", "band_url": "https://vk.gy/artists/a/",
+                 "instrument": None, "start_year": None, "end_year": None},
+                {"era_index": 2, "band_name": "Band B", "band_url": "https://vk.gy/artists/b/",
+                 "instrument": None, "start_year": None, "end_year": None},
+                {"era_index": 4, "band_name": "Band B", "band_url": "https://vk.gy/artists/b/",
+                 "instrument": None, "start_year": None, "end_year": None},
+                {"era_index": 5, "band_name": "Band C", "band_url": "https://vk.gy/artists/c/",
                  "instrument": None, "start_year": None, "end_year": None},
             ],
         },
@@ -99,6 +116,18 @@ class TestBuildGraph(unittest.TestCase):
         ids_by_name = {m["name"]: m["id"] for m in self.graph["musicians"]}
         self.assertIn(ids_by_name["Alice"], band_b["member_ids"])
         self.assertIn(ids_by_name["Bob"], band_b["member_ids"])
+
+    def test_consecutive_same_band_eras_produce_no_self_loop_edge(self):
+        carol = next(m for m in self.graph["musicians"] if m["name"] == "Carol")
+        self.assertEqual(len(carol["career"]), 4)  # all four eras kept, including the repeat
+        self.assertEqual(len(carol["edge_ids"]), 2)  # but only A->B and B->C generated
+        edges_by_id = {e["id"]: e for e in self.graph["edges"]}
+        for edge_id in carol["edge_ids"]:
+            edge = edges_by_id[edge_id]
+            self.assertNotEqual(edge["source"], edge["target"], "no edge should be a self-loop")
+        # sequence_index must be a clean 0..N-1 over the edges that actually exist, not
+        # the raw era position (which would otherwise skip a number at the gap).
+        self.assertEqual([edges_by_id[eid]["sequence_index"] for eid in carol["edge_ids"]], [0, 1])
 
 
 class TestValidateGraph(unittest.TestCase):

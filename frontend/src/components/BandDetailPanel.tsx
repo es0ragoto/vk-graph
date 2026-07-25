@@ -8,11 +8,17 @@ interface BandDetailPanelProps {
 }
 
 function instrumentsForBand(musician: Musician, bandId: string): string {
-  const instruments = musician.career
-    .filter((c) => c.band_id === bandId)
-    .map((c) => c.instrument)
-    .filter((i): i is string => Boolean(i));
-  return instruments.length ? instruments.join(', ') : '';
+  // A musician can have multiple separate stints in the same band (left and rejoined);
+  // dedupe so a repeated identical instrument doesn't show up twice.
+  const instruments = [
+    ...new Set(
+      musician.career
+        .filter((c) => c.band_id === bandId)
+        .map((c) => c.instrument)
+        .filter((i): i is string => Boolean(i)),
+    ),
+  ];
+  return instruments.join(', ');
 }
 
 export default function BandDetailPanel({ band, members, onSelectMusician, onClose }: BandDetailPanelProps) {

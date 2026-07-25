@@ -3,17 +3,25 @@ import type { GraphExport } from './types/graph';
 import { loadGraph } from './lib/loadGraph';
 import { buildGraphIndex } from './lib/graphIndex';
 import { useSelection } from './lib/useSelection';
-import { initialVisibleBandIds, expandWithBandNeighbors, expandWithMusicianPath, allBandIds } from './lib/focus';
+import { expandWithBandNeighbors, expandWithMusicianPath, allRealBandIds } from './lib/focus';
+import { loadGraphSettings, saveGraphSettings, type GraphSettings } from './lib/graphSettings';
 import GraphView from './components/GraphView';
 import BandDetailPanel from './components/BandDetailPanel';
 import MusicianDetailPanel from './components/MusicianDetailPanel';
 import SearchBox from './components/SearchBox';
+import DisplaySettingsPanel from './components/DisplaySettingsPanel';
 import './App.css';
 
 export default function App() {
   const [graph, setGraph] = useState<GraphExport | null>(null);
   const [loadError, setLoadError] = useState<string | null>(null);
   const [visibleBandIds, setVisibleBandIds] = useState<Set<string> | null>(null);
+  const [settings, setSettings] = useState<GraphSettings>(() => loadGraphSettings());
+
+  const handleSettingsChange = (next: GraphSettings) => {
+    setSettings(next);
+    saveGraphSettings(next);
+  };
 
   useEffect(() => {
     loadGraph()
@@ -25,7 +33,7 @@ export default function App() {
 
   useEffect(() => {
     if (index && visibleBandIds === null) {
-      setVisibleBandIds(initialVisibleBandIds(index));
+      setVisibleBandIds(allRealBandIds(index));
     }
   }, [index, visibleBandIds]);
 
@@ -63,10 +71,14 @@ export default function App() {
     if (edge) handleSelectMusician(edge.musician_id);
   };
 
-  const handleShowAll = () => setVisibleBandIds(allBandIds(index));
+  const handleShowAll = () => setVisibleBandIds(allRealBandIds(index));
 
   const selectedBand = selection?.type === 'band' ? index.bandsById.get(selection.id) ?? null : null;
   const selectedMusician = selection?.type === 'musician' ? index.musiciansById.get(selection.id) ?? null : null;
+
+  const realBandCount = graph.bands.filter((b) => !b.stub).length;
+  const visibleRealCount = [...visibleBandIds].filter((id) => !index.bandsById.get(id)?.stub).length;
+  const visibleStubCount = visibleBandIds.size - visibleRealCount;
 
   return (
     <div className="app-layout">
@@ -77,6 +89,7 @@ export default function App() {
           highlightedBandIds={highlights.highlightedBandIds}
           highlightedEdgeIds={highlights.highlightedEdgeIds}
           fadeOthers={highlights.fadeOthers}
+          settings={settings}
           onSelectBand={handleSelectBand}
           onSelectEdge={handleSelectEdge}
         />
@@ -85,10 +98,14 @@ export default function App() {
         <h1>Band Graph</h1>
         <SearchBox graph={graph} onSelectBand={handleSelectBand} onSelectMusician={handleSelectMusician} />
         <button className="show-all-btn" onClick={handleShowAll}>
-          Show entire graph
+          Show all {realBandCount} crawled bands
         </button>
+        <DisplaySettingsPanel settings={settings} onChange={handleSettingsChange} />
         <p className="legend">
-          {visibleBandIds.size} / {graph.bands.length} bands shown &middot; dashed border = stub (not fully crawled)
+          {visibleRealCount} / {realBandCount} crawled bands shown
+          {visibleStubCount > 0 && <> (+{visibleStubCount} stub{visibleStubCount === 1 ? '' : 's'} on visible paths)</>}
+          <br />
+          dashed border = stub: referenced by a career path but outside the crawled set
         </p>
         <div className="panel-slot">
           {selectedBand && (
