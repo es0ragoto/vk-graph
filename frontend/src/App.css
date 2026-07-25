@@ -1,0 +1,190 @@
+.app-layout {
+  display: flex;
+  height: 100%;
+  width: 100%;
+}
+
+.graph-pane {
+  flex: 1 1 auto;
+  min-width: 0;
+  /* Always dark, regardless of OS theme: node label contrast in GraphView.tsx is tuned for this background. */
+  background-color: #161616;
+}
+
+.sidebar {
+  flex: 0 0 340px;
+  max-width: 340px;
+  padding: 1rem;
+  overflow-y: auto;
+  border-left: 1px solid rgba(128, 128, 128, 0.3);
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.sidebar h1 {
+  font-size: 1.2rem;
+  margin: 0;
+}
+
+.status-screen {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  gap: 0.5rem;
+  text-align: center;
+  padding: 1rem;
+}
+
+.show-all-btn {
+  align-self: flex-start;
+}
+
+.legend {
+  font-size: 0.78rem;
+  opacity: 0.7;
+  margin: 0;
+}
+
+.hint {
+  font-size: 0.85rem;
+  opacity: 0.75;
+}
+
+.panel-slot {
+  border-top: 1px solid rgba(128, 128, 128, 0.3);
+  padding-top: 0.75rem;
+  flex: 1 1 auto;
+  overflow-y: auto;
+}
+
+.detail-panel {
+  position: relative;
+  font-size: 0.9rem;
+}
+
+.detail-panel h2 {
+  font-size: 1.05rem;
+  margin: 0 0.5rem 0.25rem 0;
+  padding-right: 1.5rem;
+}
+
+.detail-panel h3 {
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  opacity: 0.7;
+  margin: 0.9rem 0 0.4rem;
+}
+
+.native-name {
+  font-weight: 400;
+  opacity: 0.75;
+}
+
+.close-btn {
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 0.1rem 0.5rem;
+  line-height: 1;
+}
+
+.stub-note {
+  font-size: 0.8rem;
+  font-style: italic;
+  opacity: 0.7;
+}
+
+.meta-line,
+.bio {
+  font-size: 0.85rem;
+  opacity: 0.85;
+}
+
+.member-list,
+.career-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.career-list {
+  list-style: decimal;
+  padding-left: 1.1rem;
+}
+
+.link-button {
+  background: none;
+  border: none;
+  padding: 0;
+  color: #7c9fd8;
+  cursor: pointer;
+  font-size: inherit;
+  font-weight: 600;
+  text-decoration: underline;
+}
+.link-button:hover {
+  color: #a7c0ea;
+}
+
+.instrument,
+.years {
+  font-size: 0.82rem;
+  opacity: 0.75;
+}
+
+.hint-tag {
+  font-size: 0.75rem;
+  opacity: 0.6;
+  font-style: italic;
+}
+
+.search-box {
+  position: relative;
+}
+
+.search-box input {
+  width: 100%;
+  padding: 0.5rem 0.6rem;
+  border-radius: 6px;
+  border: 1px solid rgba(128, 128, 128, 0.4);
+  background: transparent;
+  color: inherit;
+  font-size: 0.9rem;
+}
+
+.search-results {
+  list-style: none;
+  margin: 0.25rem 0 0;
+  padding: 0.25rem;
+  border: 1px solid rgba(128, 128, 128, 0.4);
+  border-radius: 6px;
+  max-height: 220px;
+  overflow-y: auto;
+  position: absolute;
+  z-index: 5;
+  background: #1e1e1e;
+  width: 100%;
+}
+
+@media (prefers-color-scheme: light) {
+  .search-results {
+    background: #ffffff;
+  }
+}
+
+.search-results li {
+  padding: 0.25rem 0.3rem;
+}
+
+.result-type {
+  font-size: 0.75rem;
+  opacity: 0.6;
+  text-decoration: none;
+}

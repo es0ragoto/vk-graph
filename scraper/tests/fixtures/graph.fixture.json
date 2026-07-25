@@ -1,0 +1,94 @@
+{
+  "meta": {
+    "schema_version": 1,
+    "generated_at": "2026-07-25T00:00:00Z",
+    "source_base_url": "https://example.invalid",
+    "band_count": 11,
+    "musician_count": 8,
+    "edge_count": 8
+  },
+  "bands": [
+    { "id": "b-neon-requiem", "name": "Neon Requiem", "name_native": null, "source_url": "https://example.invalid/artists/neon-requiem/",
+      "formed_year": 1998, "disbanded_year": 2001, "stub": false, "member_ids": ["m-kaen"] },
+    { "id": "b-black-orchid", "name": "Black Orchid", "name_native": "黒蘭", "source_url": "https://example.invalid/artists/black-orchid/",
+      "formed_year": 2001, "disbanded_year": 2004, "stub": false, "member_ids": ["m-kaen"] },
+    { "id": "b-velvet-static", "name": "Velvet Static", "name_native": null, "source_url": "https://example.invalid/artists/velvet-static/",
+      "formed_year": 2004, "disbanded_year": 2008, "stub": false, "member_ids": ["m-kaen"] },
+    { "id": "b-crimson-fable", "name": "Crimson Fable", "name_native": null, "source_url": "https://example.invalid/artists/crimson-fable/",
+      "formed_year": 2008, "disbanded_year": 2012, "stub": false, "member_ids": ["m-kaen"] },
+    { "id": "b-nightshade-ensemble", "name": "Nightshade Ensemble", "name_native": null, "source_url": "https://example.invalid/artists/nightshade-ensemble/",
+      "formed_year": null, "disbanded_year": null, "stub": true, "member_ids": ["m-kaen"] },
+    { "id": "b-glass-cicada", "name": "Glass Cicada", "name_native": "硝子蝉", "source_url": "https://example.invalid/artists/glass-cicada/",
+      "formed_year": 2005, "disbanded_year": 2010, "stub": false, "member_ids": ["m-hana", "m-ibuki", "m-ren", "m-sora"] },
+    { "id": "b-hollow-parade", "name": "Hollow Parade", "name_native": null, "source_url": "https://example.invalid/artists/hollow-parade/",
+      "formed_year": 2010, "disbanded_year": null, "stub": false, "member_ids": ["m-ibuki", "m-ren", "m-sora"] },
+    { "id": "b-moth-king", "name": "Moth King", "name_native": null, "source_url": "https://example.invalid/artists/moth-king/",
+      "formed_year": 2012, "disbanded_year": 2015, "stub": false, "member_ids": ["m-yui"] },
+    { "id": "b-iron-lily", "name": "Iron Lily", "name_native": "鉄百合", "source_url": "https://example.invalid/artists/iron-lily/",
+      "formed_year": 2009, "disbanded_year": null, "stub": false, "member_ids": ["m-toa"] },
+    { "id": "b-paper-saints", "name": "Paper Saints", "name_native": null, "source_url": "https://example.invalid/artists/paper-saints/",
+      "formed_year": 2011, "disbanded_year": 2013, "stub": false, "member_ids": ["m-mika"] },
+    { "id": "b-wraithlight", "name": "Wraithlight", "name_native": null, "source_url": "https://example.invalid/artists/wraithlight/",
+      "formed_year": 2013, "disbanded_year": null, "stub": false, "member_ids": ["m-mika"] }
+  ],
+  "musicians": [
+    { "id": "m-kaen", "name": "Kaen", "name_native": "火炎", "source_url": "https://example.invalid/musicians/1/kaen/", "bio": "Vocalist known for moving between several long-running acts.", "stub": false,
+      "career": [
+        { "era_index": 1, "band_id": "b-neon-requiem", "instrument": "vocals", "start_year": 1998, "end_year": 2001 },
+        { "era_index": 2, "band_id": "b-black-orchid", "instrument": "vocals", "start_year": 2001, "end_year": 2004 },
+        { "era_index": 3, "band_id": "b-velvet-static", "instrument": "vocals", "start_year": 2004, "end_year": 2008 },
+        { "era_index": 4, "band_id": "b-crimson-fable", "instrument": "vocals, guitar", "start_year": 2008, "end_year": 2012 },
+        { "era_index": 5, "band_id": "b-nightshade-ensemble", "instrument": "vocals", "start_year": 2012, "end_year": null }
+      ],
+      "edge_ids": ["e-kaen-0", "e-kaen-1", "e-kaen-2", "e-kaen-3"] },
+    { "id": "m-hana", "name": "Hana", "name_native": "花", "source_url": "https://example.invalid/musicians/2/hana/", "bio": null, "stub": false,
+      "career": [
+        { "era_index": 1, "band_id": "b-glass-cicada", "instrument": "bass", "start_year": 2005, "end_year": 2010 }
+      ],
+      "edge_ids": [] },
+    { "id": "m-ibuki", "name": "Ibuki", "name_native": null, "source_url": "https://example.invalid/musicians/3/ibuki/", "bio": null, "stub": false,
+      "career": [
+        { "era_index": 1, "band_id": "b-glass-cicada", "instrument": "guitar", "start_year": 2005, "end_year": 2010 },
+        { "era_index": 2, "band_id": "b-hollow-parade", "instrument": "guitar", "start_year": 2010, "end_year": null }
+      ],
+      "edge_ids": ["e-ibuki-0"] },
+    { "id": "m-ren", "name": "Ren", "name_native": null, "source_url": "https://example.invalid/musicians/4/ren/", "bio": null, "stub": false,
+      "career": [
+        { "era_index": 1, "band_id": "b-glass-cicada", "instrument": "drums", "start_year": 2005, "end_year": 2010 },
+        { "era_index": 2, "band_id": "b-hollow-parade", "instrument": "drums", "start_year": 2010, "end_year": null }
+      ],
+      "edge_ids": ["e-ren-0"] },
+    { "id": "m-sora", "name": "Sora", "name_native": null, "source_url": "https://example.invalid/musicians/5/sora/", "bio": null, "stub": false,
+      "career": [
+        { "era_index": 1, "band_id": "b-glass-cicada", "instrument": "vocals", "start_year": 2005, "end_year": 2010 },
+        { "era_index": 2, "band_id": "b-hollow-parade", "instrument": "vocals", "start_year": 2010, "end_year": null }
+      ],
+      "edge_ids": ["e-sora-0"] },
+    { "id": "m-yui", "name": "Yui", "name_native": "唯", "source_url": "https://example.invalid/musicians/6/yui/", "bio": null, "stub": false,
+      "career": [
+        { "era_index": 1, "band_id": "b-moth-king", "instrument": "keyboards", "start_year": 2012, "end_year": 2015 }
+      ],
+      "edge_ids": [] },
+    { "id": "m-toa", "name": "Toa", "name_native": null, "source_url": "https://example.invalid/musicians/7/toa/", "bio": null, "stub": false,
+      "career": [
+        { "era_index": 1, "band_id": "b-iron-lily", "instrument": "bass", "start_year": 2009, "end_year": null }
+      ],
+      "edge_ids": [] },
+    { "id": "m-mika", "name": "Mika", "name_native": null, "source_url": "https://example.invalid/musicians/8/mika/", "bio": null, "stub": false,
+      "career": [
+        { "era_index": 1, "band_id": "b-paper-saints", "instrument": "guitar", "start_year": 2011, "end_year": 2013 },
+        { "era_index": 2, "band_id": "b-wraithlight", "instrument": "guitar", "start_year": 2013, "end_year": null }
+      ],
+      "edge_ids": ["e-mika-0"] }
+  ],
+  "edges": [
+    { "id": "e-kaen-0", "musician_id": "m-kaen", "source": "b-neon-requiem", "target": "b-black-orchid", "sequence_index": 0, "from_year": 2001, "concurrent": false },
+    { "id": "e-kaen-1", "musician_id": "m-kaen", "source": "b-black-orchid", "target": "b-velvet-static", "sequence_index": 1, "from_year": 2004, "concurrent": false },
+    { "id": "e-kaen-2", "musician_id": "m-kaen", "source": "b-velvet-static", "target": "b-crimson-fable", "sequence_index": 2, "from_year": 2008, "concurrent": false },
+    { "id": "e-kaen-3", "musician_id": "m-kaen", "source": "b-crimson-fable", "target": "b-nightshade-ensemble", "sequence_index": 3, "from_year": 2012, "concurrent": false },
+    { "id": "e-ibuki-0", "musician_id": "m-ibuki", "source": "b-glass-cicada", "target": "b-hollow-parade", "sequence_index": 0, "from_year": 2010, "concurrent": false },
+    { "id": "e-ren-0", "musician_id": "m-ren", "source": "b-glass-cicada", "target": "b-hollow-parade", "sequence_index": 0, "from_year": 2010, "concurrent": false },
+    { "id": "e-sora-0", "musician_id": "m-sora", "source": "b-glass-cicada", "target": "b-hollow-parade", "sequence_index": 0, "from_year": 2010, "concurrent": false },
+    { "id": "e-mika-0", "musician_id": "m-mika", "source": "b-paper-saints", "target": "b-wraithlight", "sequence_index": 0, "from_year": 2013, "concurrent": false }
+  ]
+}
