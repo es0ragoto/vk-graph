@@ -11,6 +11,22 @@
   background-color: #161616;
 }
 
+.edge-tooltip {
+  position: absolute;
+  z-index: 20;
+  /* Never intercepts pointer events - it must not get in the way of cytoscape's own hit
+     testing on the canvas underneath it. */
+  pointer-events: none;
+  background: #262626;
+  color: #e8e8e8;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 4px;
+  padding: 0.25rem 0.55rem;
+  font-size: 0.8rem;
+  white-space: nowrap;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
+}
+
 .sidebar {
   flex: 0 0 340px;
   max-width: 340px;

@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useRef } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import CytoscapeComponent from 'react-cytoscapejs';
 import cytoscape from 'cytoscape';
 import type { GraphExport } from '../types/graph';
@@ -195,6 +195,24 @@ export default function GraphView({
     return [...nodeEls, ...edgeEls];
   }, [graph, visibleBandIds]);
 
+  // For the edge-hover tooltip - matches the "Romaji (Japanese)" display convention used
+  // throughout the detail panels.
+  const musicianNameByEdgeId = useMemo(() => {
+    const musicianById = new Map(graph.musicians.map((m) => [m.id, m]));
+    const map = new Map<string, string>();
+    for (const e of graph.edges) {
+      const m = musicianById.get(e.musician_id);
+      if (m) map.set(e.id, m.name_native ? `${m.name} (${m.name_native})` : m.name);
+    }
+    return map;
+  }, [graph]);
+  // Read inside the cy callback below via a ref, same reason as onSelectBandRef/
+  // onSelectEdgeRef - that callback only runs once per cy instance and would otherwise
+  // close over a stale map.
+  const musicianNameByEdgeIdRef = useRef(musicianNameByEdgeId);
+  musicianNameByEdgeIdRef.current = musicianNameByEdgeId;
+  const [edgeTooltip, setEdgeTooltip] = useState<{ text: string; x: number; y: number } | null>(null);
+
   const stylesheet = useMemo(() => buildStylesheet(settings), [settings]);
 
   // Cosmetic-only properties (size/font/width/arrows) - cheap, apply on every change.
@@ -375,48 +393,66 @@ export default function GraphView({
   }, [highlightedBandIds, connectedBandIds, highlightedEdgeIds, incomingEdgeIds, outgoingEdgeIds, fadeOthers, elements, resetToken]);
 
   return (
-    <CytoscapeComponent
-      elements={elements}
-      stylesheet={stylesheet}
-      style={{ width: '100%', height: '100%' }}
-      minZoom={settings.minZoom}
-      maxZoom={settings.maxZoom}
-      // Rendering-performance hints for the ~2000-node "show stub bands" case - all are
-      // init-only (read once when the underlying Cytoscape instance is constructed, not
-      // reactive to later prop changes), which is fine since they're meant to always be on
-      // rather than toggled at runtime:
-      //  - textureOnViewport: render a cached raster snapshot during camera pan/zoom instead
-      //    of redrawing every element live, then redraw crisply once that settles.
-      //  - motionBlur: reuses a blurred previous frame during interaction instead of a full
-      //    redraw, the officially recommended setting for large graphs.
-      //  - pixelRatio 1: renders at CSS pixel density instead of the display's native device
-      //    pixel ratio, so a 2x/3x retina screen isn't pushing 4-9x the actual pixel count
-      //    through the canvas every frame. Trade-off: slightly softer edges/text.
-      // Deliberately NOT using hideEdgesOnViewport: per cytoscape's own renderer source, its
-      // hide condition also fires while dragging a *node* (not just panning/zooming the
-      // camera), which made every edge vanish for the duration of any node drag.
-      textureOnViewport
-      motionBlur
-      // react-cytoscapejs's PropTypes for this are declared as oneOfType([string, object])
-      // (a bug in that library - cytoscape's own API accepts 'auto' or a number) - passing
-      // the numeral as a string satisfies its check and still reaches cytoscape correctly,
-      // since the value is forwarded to the constructor as-is and JS coerces it numerically.
-      pixelRatio="1"
-      cy={(cy) => {
-        if (cyRef.current === cy) return;
-        cyRef.current = cy;
-        cy.on('tap', 'node', (evt) => onSelectBandRef.current(evt.target.id()));
-        cy.on('tap', 'edge', (evt) => onSelectEdgeRef.current(evt.target.id()));
-        // Cytoscape caches its container's dimensions and only re-measures them on an
-        // explicit cy.resize() call - without this, fit()/animate({fit}) after the browser
-        // window (or this pane) has been resized computes zoom/pan against the old size,
-        // leaving part of the graph outside the actual viewport.
-        const container = cy.container();
-        if (container) {
-          const observer = new ResizeObserver(() => cy.resize());
-          observer.observe(container);
-        }
-      }}
-    />
+    <div style={{ position: 'relative', width: '100%', height: '100%' }}>
+      <CytoscapeComponent
+        elements={elements}
+        stylesheet={stylesheet}
+        style={{ width: '100%', height: '100%' }}
+        minZoom={settings.minZoom}
+        maxZoom={settings.maxZoom}
+        // Rendering-performance hints for the ~2000-node "show stub bands" case - all are
+        // init-only (read once when the underlying Cytoscape instance is constructed, not
+        // reactive to later prop changes), which is fine since they're meant to always be on
+        // rather than toggled at runtime:
+        //  - textureOnViewport: render a cached raster snapshot during camera pan/zoom instead
+        //    of redrawing every element live, then redraw crisply once that settles.
+        //  - motionBlur: reuses a blurred previous frame during interaction instead of a full
+        //    redraw, the officially recommended setting for large graphs.
+        //  - pixelRatio 1: renders at CSS pixel density instead of the display's native device
+        //    pixel ratio, so a 2x/3x retina screen isn't pushing 4-9x the actual pixel count
+        //    through the canvas every frame. Trade-off: slightly softer edges/text.
+        // Deliberately NOT using hideEdgesOnViewport: per cytoscape's own renderer source, its
+        // hide condition also fires while dragging a *node* (not just panning/zooming the
+        // camera), which made every edge vanish for the duration of any node drag.
+        textureOnViewport
+        motionBlur
+        // react-cytoscapejs's PropTypes for this are declared as oneOfType([string, object])
+        // (a bug in that library - cytoscape's own API accepts 'auto' or a number) - passing
+        // the numeral as a string satisfies its check and still reaches cytoscape correctly,
+        // since the value is forwarded to the constructor as-is and JS coerces it numerically.
+        pixelRatio="1"
+        cy={(cy) => {
+          if (cyRef.current === cy) return;
+          cyRef.current = cy;
+          cy.on('tap', 'node', (evt) => onSelectBandRef.current(evt.target.id()));
+          cy.on('tap', 'edge', (evt) => onSelectEdgeRef.current(evt.target.id()));
+          cy.on('mouseover', 'edge', (evt) => {
+            const text = musicianNameByEdgeIdRef.current.get(evt.target.id());
+            if (!text) return;
+            const pos = evt.renderedPosition ?? evt.target.renderedMidpoint();
+            setEdgeTooltip({ text, x: pos.x, y: pos.y });
+          });
+          cy.on('mousemove', 'edge', (evt) => {
+            const pos = evt.renderedPosition ?? evt.target.renderedMidpoint();
+            setEdgeTooltip((t) => (t ? { ...t, x: pos.x, y: pos.y } : t));
+          });
+          cy.on('mouseout', 'edge', () => setEdgeTooltip(null));
+          // Cytoscape caches its container's dimensions and only re-measures them on an
+          // explicit cy.resize() call - without this, fit()/animate({fit}) after the browser
+          // window (or this pane) has been resized computes zoom/pan against the old size,
+          // leaving part of the graph outside the actual viewport.
+          const container = cy.container();
+          if (container) {
+            const observer = new ResizeObserver(() => cy.resize());
+            observer.observe(container);
+          }
+        }}
+      />
+      {edgeTooltip && (
+        <div className="edge-tooltip" style={{ left: edgeTooltip.x + 14, top: edgeTooltip.y + 14 }}>
+          {edgeTooltip.text}
+        </div>
+      )}
+    </div>
   );
 }
