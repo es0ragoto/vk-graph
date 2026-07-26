@@ -190,10 +190,15 @@ export default function GraphView({
         const groups = new Map<string, { pos: { x: number; y: number }; ids: string[] }>();
         for (const id of newIds) {
           const node = cy.getElementById(id);
+          // cytoscape's own .d.ts types .filter() as always returning the generic
+          // CollectionReturnValue (EdgeSingular | NodeSingular after .first()), even when
+          // called on an already-node-only NodeCollection - .nodes() right before it
+          // guarantees this is actually a node at runtime, so the cast is safe.
           const anchor = node
-            .neighborhood('node')
+            .neighborhood()
+            .nodes()
             .filter((n) => !newIds.includes(n.id()))
-            .first();
+            .first() as cytoscape.NodeSingular;
           const anchorKey = anchor.nonempty() ? anchor.id() : '__fallback__';
           const anchorPos = anchor.nonempty() ? anchor.position() : fallback;
           if (!groups.has(anchorKey)) groups.set(anchorKey, { pos: anchorPos, ids: [] });
