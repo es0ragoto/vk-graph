@@ -101,6 +101,23 @@
   opacity: 0.75;
 }
 
+.edge-legend {
+  font-size: 0.78rem;
+  opacity: 0.85;
+  margin: 0.4rem 0 0;
+}
+.edge-legend .legend-dot {
+  display: inline-block;
+  width: 0.6rem;
+  height: 0.6rem;
+  border-radius: 50%;
+  margin: 0 0.3rem 0 0.9rem;
+  vertical-align: middle;
+}
+.edge-legend .legend-dot:first-child {
+  margin-left: 0;
+}
+
 .panel-slot {
   border-top: 1px solid rgba(128, 128, 128, 0.3);
   padding-top: 0.75rem;
@@ -127,9 +144,19 @@
   margin: 0.9rem 0 0.4rem;
 }
 
-.native-name {
+.alt-name {
   font-weight: 400;
   opacity: 0.75;
+}
+
+.source-link {
+  display: inline-block;
+  font-size: 0.78rem;
+  margin: 0.15rem 0 0.4rem;
+  color: #7c9fd8;
+}
+.source-link:hover {
+  color: #a7c0ea;
 }
 
 .close-btn {
@@ -181,8 +208,7 @@
   color: #a7c0ea;
 }
 
-.instrument,
-.years {
+.instrument {
   font-size: 0.82rem;
   opacity: 0.75;
 }

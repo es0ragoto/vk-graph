@@ -15,8 +15,11 @@ export default function MusicianDetailPanel({ musician, bandsById, onSelectBand,
       </button>
       <h2>
         {musician.name}
-        {musician.name_native && <span className="native-name"> ({musician.name_native})</span>}
+        {musician.name_native && <span className="alt-name"> ({musician.name_native})</span>}
       </h2>
+      <a className="source-link" href={musician.source_url} target="_blank" rel="noopener noreferrer">
+        View on vk.gy &#8599;
+      </a>
       {musician.stub && <p className="stub-note">Referenced but not fully crawled - limited data available.</p>}
       {musician.bio && <p className="bio">{musician.bio}</p>}
       <h3>Band history</h3>
@@ -29,10 +32,6 @@ export default function MusicianDetailPanel({ musician, bandsById, onSelectBand,
                 {band ? band.name : stop.band_id}
               </button>
               {stop.instrument && <span className="instrument"> &mdash; {stop.instrument}</span>}
-              <span className="years">
-                {' '}
-                ({stop.start_year ?? '?'}&ndash;{stop.end_year ?? 'present'})
-              </span>
             </li>
           );
         })}

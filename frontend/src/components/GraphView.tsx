@@ -3,13 +3,15 @@ import CytoscapeComponent from 'react-cytoscapejs';
 import cytoscape from 'cytoscape';
 import type { GraphExport } from '../types/graph';
 import type { GraphSettings } from '../lib/graphSettings';
-import { bandDisplayName } from '../lib/displayName';
+import { INCOMING_EDGE_COLOR, OUTGOING_EDGE_COLOR } from '../lib/edgeColors';
 
 interface GraphViewProps {
   graph: GraphExport;
   visibleBandIds: Set<string>;
   highlightedBandIds: Set<string>;
   highlightedEdgeIds: Set<string>;
+  incomingEdgeIds: Set<string>;
+  outgoingEdgeIds: Set<string>;
   fadeOthers: boolean;
   settings: GraphSettings;
   onSelectBand: (bandId: string) => void;
@@ -69,6 +71,28 @@ function buildStylesheet(settings: GraphSettings): cytoscape.StylesheetJsonBlock
         'z-index': 10,
       },
     },
+    {
+      // Band-click neighborhood: incoming (arriving here) vs outgoing (leaving here) get
+      // distinct colors so the two directions are easy to tell apart at a glance.
+      selector: 'edge.highlighted-incoming',
+      style: {
+        width: settings.edgeWidth * 2,
+        'line-color': INCOMING_EDGE_COLOR,
+        'target-arrow-color': INCOMING_EDGE_COLOR,
+        opacity: 1,
+        'z-index': 10,
+      },
+    },
+    {
+      selector: 'edge.highlighted-outgoing',
+      style: {
+        width: settings.edgeWidth * 2,
+        'line-color': OUTGOING_EDGE_COLOR,
+        'target-arrow-color': OUTGOING_EDGE_COLOR,
+        opacity: 1,
+        'z-index': 10,
+      },
+    },
     { selector: 'edge.faded', style: { opacity: 0.06 } },
   ];
 }
@@ -93,6 +117,8 @@ export default function GraphView({
   visibleBandIds,
   highlightedBandIds,
   highlightedEdgeIds,
+  incomingEdgeIds,
+  outgoingEdgeIds,
   fadeOthers,
   settings,
   onSelectBand,
@@ -111,11 +137,15 @@ export default function GraphView({
   // drop just that node in place instead of re-running the whole force simulation (which
   // would nudge everything else too, even with the camera itself held still).
   const previousNodeIdsRef = useRef<Set<string>>(new Set());
+  // Tracks the spacing setting so a pure shrink (a selection change that only removes
+  // stubs, adding none) can be told apart from an actual spacing-slider change - both
+  // reach the "no new ids" branch, but only the latter should trigger a re-layout.
+  const previousSpacingRef = useRef(settings.layoutSpacing);
 
   const elements = useMemo<cytoscape.ElementDefinition[]>(() => {
     const nodeEls: cytoscape.ElementDefinition[] = graph.bands
       .filter((b) => visibleBandIds.has(b.id))
-      .map((b) => ({ data: { id: b.id, label: bandDisplayName(b), stub: b.stub } }));
+      .map((b) => ({ data: { id: b.id, label: b.name, stub: b.stub } }));
     const edgeEls: cytoscape.ElementDefinition[] = graph.edges
       .filter((e) => visibleBandIds.has(e.source) && visibleBandIds.has(e.target))
       .map((e) => ({ data: { id: e.id, source: e.source, target: e.target } }));
@@ -135,6 +165,8 @@ export default function GraphView({
     if (!cy) return;
     const handle = setTimeout(() => {
       const currentIds = new Set(cy.nodes().map((n) => n.id()));
+      const spacingChanged = previousSpacingRef.current !== settings.layoutSpacing;
+      previousSpacingRef.current = settings.layoutSpacing;
 
       if (!hasFittedOnceRef.current) {
         // Initial load: arrange everything and frame the camera once.
@@ -145,33 +177,50 @@ export default function GraphView({
       }
 
       const newIds = [...currentIds].filter((id) => !previousNodeIdsRef.current.has(id));
-      if (newIds.length === 0) {
-        // Nothing structurally new (e.g. only the spacing slider changed, or bands were
-        // hidden again) - resettle with the new spacing, still without moving the camera.
-        cy.layout(buildLayoutOptions(settings.layoutSpacing, false)).run();
-      } else {
+      if (newIds.length > 0) {
         // A click revealed new node(s). Don't re-run the simulation at all - it would
         // shift already-visible nodes even without touching the camera. Instead, drop
         // each new node next to an already-positioned neighbor (falling back to the
-        // current viewport center if it has none yet), so nothing already on screen
-        // moves even slightly.
+        // current viewport center if it has none yet). Siblings that share the same
+        // anchor are fanned out evenly around it on a circle, rather than each landing at
+        // an independently-random offset, which is what made them bunch up and overlap.
         const viewCenter = cy.extent();
         const fallback = { x: (viewCenter.x1 + viewCenter.x2) / 2, y: (viewCenter.y1 + viewCenter.y2) / 2 };
+
+        const groups = new Map<string, { pos: { x: number; y: number }; ids: string[] }>();
+        for (const id of newIds) {
+          const node = cy.getElementById(id);
+          const anchor = node
+            .neighborhood('node')
+            .filter((n) => !newIds.includes(n.id()))
+            .first();
+          const anchorKey = anchor.nonempty() ? anchor.id() : '__fallback__';
+          const anchorPos = anchor.nonempty() ? anchor.position() : fallback;
+          if (!groups.has(anchorKey)) groups.set(anchorKey, { pos: anchorPos, ids: [] });
+          groups.get(anchorKey)!.ids.push(id);
+        }
+
         cy.batch(() => {
-          for (const id of newIds) {
-            const node = cy.getElementById(id);
-            const anchor = node
-              .neighborhood('node')
-              .filter((n) => !newIds.includes(n.id()))
-              .first();
-            const base = anchor.nonempty() ? anchor.position() : fallback;
-            node.position({
-              x: base.x + (Math.random() - 0.5) * 80,
-              y: base.y + (Math.random() - 0.5) * 80,
+          for (const { pos, ids } of groups.values()) {
+            const count = ids.length;
+            const radius = Math.max(90, settings.nodeSize * 1.5 + count * 10);
+            const startAngle = Math.random() * 2 * Math.PI;
+            ids.forEach((id, i) => {
+              const angle = startAngle + (2 * Math.PI * i) / count;
+              cy.getElementById(id).position({
+                x: pos.x + radius * Math.cos(angle),
+                y: pos.y + radius * Math.sin(angle),
+              });
             });
           }
         });
+      } else if (spacingChanged) {
+        // No new nodes, but the spacing slider itself moved - that's the one legitimate
+        // reason to resettle everyone at their new spacing, still without touching the camera.
+        cy.layout(buildLayoutOptions(settings.layoutSpacing, false)).run();
       }
+      // Else: a pure shrink (a selection change removed stubs without adding any) or some
+      // other no-op - leave every remaining node exactly where it already is.
       previousNodeIdsRef.current = currentIds;
     }, LAYOUT_DEBOUNCE_MS);
     return () => clearTimeout(handle);
@@ -184,29 +233,47 @@ export default function GraphView({
     cy.maxZoom(settings.maxZoom);
   }, [settings.minZoom, settings.maxZoom]);
 
-  // Apply highlight/fade classes. Only re-fit the camera for a musician path (fadeOthers)
-  // selection, since a path can span far-apart bands worth reorienting to see - a plain
-  // band click highlights its incident edges in place and must NOT move the camera.
+  // Apply highlight/fade classes immediately (instant feedback), then fit the camera to
+  // whatever got highlighted - a band click frames the clicked band plus its incident
+  // edges/neighbors, a musician click frames the whole path, same as each other. The fit
+  // itself is delayed to match the layout effect's debounce, so any newly-revealed stub
+  // nodes have already settled into their fanned-out positions before we frame them -
+  // fitting immediately would frame their pre-placement position and jump again shortly
+  // after once they're actually placed. This never moves a node's own position, only the
+  // viewport, so it doesn't reintroduce the "graph shifts under me" problem from before.
   useEffect(() => {
     const cy = cyRef.current;
     if (!cy) return;
     cy.batch(() => {
-      cy.elements().removeClass('highlighted faded');
+      cy.elements().removeClass('highlighted faded highlighted-incoming highlighted-outgoing');
       if (fadeOthers) cy.elements().addClass('faded');
       cy.nodes().forEach((n) => {
         if (highlightedBandIds.has(n.id())) n.removeClass('faded').addClass('highlighted');
       });
       cy.edges().forEach((e) => {
         if (highlightedEdgeIds.has(e.id())) e.removeClass('faded').addClass('highlighted');
+        if (incomingEdgeIds.has(e.id())) e.removeClass('faded').addClass('highlighted-incoming');
+        if (outgoingEdgeIds.has(e.id())) e.removeClass('faded').addClass('highlighted-outgoing');
       });
     });
-    if (fadeOthers) {
-      const highlighted = cy.nodes('.highlighted');
-      if (highlighted.length > 0) {
-        cy.animate({ fit: { eles: highlighted, padding: 80 } }, { duration: 300 });
+
+    const handle = setTimeout(() => {
+      // Fit to more than just the highlighted elements themselves: for a band click, only
+      // the clicked band gets `.highlighted` - its neighbors are only reachable via the
+      // incoming/outgoing edges. An edge's own bounding box reaches only to the neighbor's
+      // center-ish point, not its full circle plus label below it, so fitting to edges
+      // alone left neighbor nodes and names clipped at the frame edge. Explicitly pulling
+      // in connectedNodes() ensures every neighbor's full rendered extent (node + label) is
+      // accounted for. For a musician path this is a no-op beyond what's already
+      // highlighted, since a path edge's endpoints are themselves already path bands.
+      const relevantEdges = cy.edges('.highlighted, .highlighted-incoming, .highlighted-outgoing');
+      const toFit = relevantEdges.union(relevantEdges.connectedNodes()).union(cy.nodes('.highlighted'));
+      if (toFit.length > 0) {
+        cy.animate({ fit: { eles: toFit, padding: 80 } }, { duration: 300 });
       }
-    }
-  }, [highlightedBandIds, highlightedEdgeIds, fadeOthers, elements]);
+    }, LAYOUT_DEBOUNCE_MS);
+    return () => clearTimeout(handle);
+  }, [highlightedBandIds, highlightedEdgeIds, incomingEdgeIds, outgoingEdgeIds, fadeOthers, elements]);
 
   return (
     <CytoscapeComponent

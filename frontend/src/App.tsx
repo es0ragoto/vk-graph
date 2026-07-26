@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import type { GraphExport } from './types/graph';
 import { loadGraph } from './lib/loadGraph';
 import { buildGraphIndex } from './lib/graphIndex';
@@ -15,7 +15,6 @@ import './App.css';
 export default function App() {
   const [graph, setGraph] = useState<GraphExport | null>(null);
   const [loadError, setLoadError] = useState<string | null>(null);
-  const [visibleBandIds, setVisibleBandIds] = useState<Set<string> | null>(null);
   const [settings, setSettings] = useState<GraphSettings>(() => loadGraphSettings());
 
   const handleSettingsChange = (next: GraphSettings) => {
@@ -30,14 +29,29 @@ export default function App() {
   }, []);
 
   const index = useMemo(() => (graph ? buildGraphIndex(graph) : null), [graph]);
-
-  useEffect(() => {
-    if (index && visibleBandIds === null) {
-      setVisibleBandIds(allRealBandIds(index));
-    }
-  }, [index, visibleBandIds]);
+  const realBandIds = useMemo(() => (index ? allRealBandIds(index) : null), [index]);
 
   const { selection, selectBand, selectMusician, clearSelection, highlights } = useSelection(index);
+
+  // Stubs are ephemeral: visible bands are always "every real band" plus whatever a stub
+  // neighbor/path the *current* selection pulls in - switching to a different selection (or
+  // clearing it) drops any stubs that aren't relevant anymore, rather than accumulating.
+  // The stableRef keeps the same Set reference when content is unchanged (e.g. selecting a
+  // band with no stub neighbors), so GraphView's memoized layout doesn't do pointless work.
+  const stableVisibleBandIdsRef = useRef<Set<string> | null>(null);
+  const visibleBandIds = useMemo(() => {
+    if (!index || !realBandIds) return null;
+    let next = realBandIds;
+    if (selection?.type === 'band') next = expandWithBandNeighbors(realBandIds, selection.id, index);
+    else if (selection?.type === 'musician') next = expandWithMusicianPath(realBandIds, selection.id, index);
+
+    const prev = stableVisibleBandIdsRef.current;
+    if (prev && prev.size === next.size && [...next].every((id) => prev.has(id))) {
+      return prev;
+    }
+    stableVisibleBandIdsRef.current = next;
+    return next;
+  }, [index, realBandIds, selection]);
 
   if (loadError) {
     return (
@@ -56,29 +70,17 @@ export default function App() {
     );
   }
 
-  const handleSelectBand = (bandId: string) => {
-    selectBand(bandId);
-    setVisibleBandIds((prev) => expandWithBandNeighbors(prev ?? new Set(), bandId, index));
-  };
-
-  const handleSelectMusician = (musicianId: string) => {
-    selectMusician(musicianId);
-    setVisibleBandIds((prev) => expandWithMusicianPath(prev ?? new Set(), musicianId, index));
-  };
-
-  const handleSelectEdge = (edgeId: string) => {
-    const edge = index.edgesById.get(edgeId);
-    if (edge) handleSelectMusician(edge.musician_id);
-  };
-
-  const handleShowAll = () => setVisibleBandIds(allRealBandIds(index));
+  const realBandCount = graph.bands.filter((b) => !b.stub).length;
+  const visibleRealCount = [...visibleBandIds].filter((id) => !index.bandsById.get(id)?.stub).length;
+  const visibleStubCount = visibleBandIds.size - visibleRealCount;
 
   const selectedBand = selection?.type === 'band' ? index.bandsById.get(selection.id) ?? null : null;
   const selectedMusician = selection?.type === 'musician' ? index.musiciansById.get(selection.id) ?? null : null;
 
-  const realBandCount = graph.bands.filter((b) => !b.stub).length;
-  const visibleRealCount = [...visibleBandIds].filter((id) => !index.bandsById.get(id)?.stub).length;
-  const visibleStubCount = visibleBandIds.size - visibleRealCount;
+  const handleSelectEdge = (edgeId: string) => {
+    const edge = index.edgesById.get(edgeId);
+    if (edge) selectMusician(edge.musician_id);
+  };
 
   return (
     <div className="app-layout">
@@ -88,22 +90,24 @@ export default function App() {
           visibleBandIds={visibleBandIds}
           highlightedBandIds={highlights.highlightedBandIds}
           highlightedEdgeIds={highlights.highlightedEdgeIds}
+          incomingEdgeIds={highlights.incomingEdgeIds}
+          outgoingEdgeIds={highlights.outgoingEdgeIds}
           fadeOthers={highlights.fadeOthers}
           settings={settings}
-          onSelectBand={handleSelectBand}
+          onSelectBand={selectBand}
           onSelectEdge={handleSelectEdge}
         />
       </div>
       <aside className="sidebar">
         <h1>Band Graph</h1>
-        <SearchBox graph={graph} onSelectBand={handleSelectBand} onSelectMusician={handleSelectMusician} />
-        <button className="show-all-btn" onClick={handleShowAll}>
+        <SearchBox graph={graph} onSelectBand={selectBand} onSelectMusician={selectMusician} />
+        <button className="show-all-btn" onClick={clearSelection}>
           Show all {realBandCount} crawled bands
         </button>
         <DisplaySettingsPanel settings={settings} onChange={handleSettingsChange} />
         <p className="legend">
           {visibleRealCount} / {realBandCount} crawled bands shown
-          {visibleStubCount > 0 && <> (+{visibleStubCount} stub{visibleStubCount === 1 ? '' : 's'} on visible paths)</>}
+          {visibleStubCount > 0 && <> (+{visibleStubCount} stub{visibleStubCount === 1 ? '' : 's'} on the current selection)</>}
           <br />
           dashed border = stub: referenced by a career path but outside the crawled set
         </p>
@@ -112,7 +116,7 @@ export default function App() {
             <BandDetailPanel
               band={selectedBand}
               members={selectedBand.member_ids.map((id) => index.musiciansById.get(id)).filter((m): m is NonNullable<typeof m> => Boolean(m))}
-              onSelectMusician={handleSelectMusician}
+              onSelectMusician={selectMusician}
               onClose={clearSelection}
             />
           )}
@@ -120,7 +124,7 @@ export default function App() {
             <MusicianDetailPanel
               musician={selectedMusician}
               bandsById={index.bandsById}
-              onSelectBand={handleSelectBand}
+              onSelectBand={selectBand}
               onClose={clearSelection}
             />
           )}

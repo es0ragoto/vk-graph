@@ -1,4 +1,5 @@
 import type { Band, Musician } from '../types/graph';
+import { INCOMING_EDGE_COLOR, OUTGOING_EDGE_COLOR } from '../lib/edgeColors';
 
 interface BandDetailPanelProps {
   band: Band;
@@ -29,11 +30,18 @@ export default function BandDetailPanel({ band, members, onSelectMusician, onClo
       </button>
       <h2>
         {band.name}
-        {band.name_native && <span className="native-name"> ({band.name_native})</span>}
+        {band.name_native && <span className="alt-name"> ({band.name_native})</span>}
       </h2>
+      <a className="source-link" href={band.source_url} target="_blank" rel="noopener noreferrer">
+        View on vk.gy &#8599;
+      </a>
       {band.stub && <p className="stub-note">Referenced but not fully crawled - limited data available.</p>}
       <p className="meta-line">
         {band.formed_year ?? '?'}&ndash;{band.disbanded_year ?? 'present'}
+      </p>
+      <p className="edge-legend">
+        <span className="legend-dot" style={{ backgroundColor: INCOMING_EDGE_COLOR }} /> incoming
+        <span className="legend-dot" style={{ backgroundColor: OUTGOING_EDGE_COLOR }} /> outgoing
       </p>
       <h3>Members ({members.length})</h3>
       <ul className="member-list">

@@ -33,8 +33,10 @@ def _parse_member_block(block: Tag, page_url: str) -> MemberLink | None:
     instrument = None
     position_h4 = block.find("h4")
     if position_h4 is not None:
-        pos_link = position_h4.find("a")
-        instrument = (pos_link or position_h4).get_text(strip=True) or None
+        # Simple positions ("vocals", "guitar") are plain text, but qualified ones (e.g.
+        # "support guitarist") use the same any--en/any--ja convention as names - route
+        # through the same helper so the native half doesn't get concatenated in.
+        instrument = bilingual_text(position_h4)[0] or None
 
     return MemberLink(name=name, name_native=name_native, musician_url=musician_url, instrument=instrument)
 
