@@ -15,6 +15,10 @@ export interface Band {
   disbanded_year: number | null;
   stub: boolean;
   member_ids: string[];
+  // Baked in offline by scripts/precompute-layout.mjs (a one-time cose run over the whole
+  // graph, real bands and stubs alike) so the browser never has to lay out the graph itself.
+  // Optional/nullable so the app still works against an older graph.json that predates this.
+  position?: { x: number; y: number } | null;
 }
 
 export interface Musician {

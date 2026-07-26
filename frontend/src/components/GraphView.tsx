@@ -9,6 +9,7 @@ interface GraphViewProps {
   graph: GraphExport;
   visibleBandIds: Set<string>;
   highlightedBandIds: Set<string>;
+  connectedBandIds: Set<string>;
   highlightedEdgeIds: Set<string>;
   incomingEdgeIds: Set<string>;
   outgoingEdgeIds: Set<string>;
@@ -121,6 +122,7 @@ export default function GraphView({
   graph,
   visibleBandIds,
   highlightedBandIds,
+  connectedBandIds,
   highlightedEdgeIds,
   incomingEdgeIds,
   outgoingEdgeIds,
@@ -152,10 +154,41 @@ export default function GraphView({
   // path (with a fit, since the visible extent just changed drastically either way).
   const previousShowStubsRef = useRef(settings.showStubs);
 
+  // scripts/precompute-layout.mjs bakes a cose-computed position into every band (real and
+  // stub alike) offline, once, so the browser never has to run its own force simulation -
+  // that's what let a ~2000-node "show stub bands" toggle freeze the tab. Falls back to the
+  // legacy in-browser cose path below only if graph.json predates that script.
+  const originalPositionById = useMemo(() => {
+    const map = new Map<string, { x: number; y: number }>();
+    for (const b of graph.bands) {
+      if (b.position) map.set(b.id, b.position);
+    }
+    return map;
+  }, [graph]);
+  const hasPrecomputedPositions = graph.bands.length > 0 && originalPositionById.size === graph.bands.length;
+  // "Layout spacing" becomes a cheap uniform scale of the baked positions around their
+  // centroid, rather than a from-scratch re-simulation - spreads/compacts the same
+  // arrangement instantly, at any node count.
+  const positionCentroid = useMemo(() => {
+    if (originalPositionById.size === 0) return { x: 0, y: 0 };
+    let sx = 0;
+    let sy = 0;
+    for (const p of originalPositionById.values()) {
+      sx += p.x;
+      sy += p.y;
+    }
+    return { x: sx / originalPositionById.size, y: sy / originalPositionById.size };
+  }, [originalPositionById]);
+
   const elements = useMemo<cytoscape.ElementDefinition[]>(() => {
     const nodeEls: cytoscape.ElementDefinition[] = graph.bands
       .filter((b) => visibleBandIds.has(b.id))
-      .map((b) => ({ data: { id: b.id, label: b.name, stub: b.stub } }));
+      .map((b) => ({
+        data: { id: b.id, label: b.name, stub: b.stub },
+        // Unscaled baked position - the layout effect below applies the current spacing
+        // scale on top of this right after (re)placing nodes.
+        ...(b.position ? { position: { x: b.position.x, y: b.position.y } } : {}),
+      }));
     const edgeEls: cytoscape.ElementDefinition[] = graph.edges
       .filter((e) => visibleBandIds.has(e.source) && visibleBandIds.has(e.target))
       .map((e) => ({ data: { id: e.id, source: e.source, target: e.target } }));
@@ -177,6 +210,38 @@ export default function GraphView({
       const currentIds = new Set(cy.nodes().map((n) => n.id()));
       const spacingChanged = previousSpacingRef.current !== settings.layoutSpacing;
       previousSpacingRef.current = settings.layoutSpacing;
+      const showStubsChanged = previousShowStubsRef.current !== settings.showStubs;
+      previousShowStubsRef.current = settings.showStubs;
+
+      if (hasPrecomputedPositions) {
+        // Every node already has a baked-in position (scripts/precompute-layout.mjs) -
+        // "laying out" is just scaling those positions around their centroid by the current
+        // spacing value, an O(n) position update instead of a from-scratch force simulation.
+        // That's instant at any graph size, so it replaces cose entirely here: no per-click
+        // fan-out, no full re-simulation on the stub toggle (that's what previously took a
+        // measured 100+ seconds in-browser for this graph's ~2000 nodes and froze the tab).
+        cy.resize();
+        cy.batch(() => {
+          cy.nodes().forEach((n) => {
+            const orig = originalPositionById.get(n.id());
+            if (!orig) return;
+            n.position({
+              x: positionCentroid.x + (orig.x - positionCentroid.x) * settings.layoutSpacing,
+              y: positionCentroid.y + (orig.y - positionCentroid.y) * settings.layoutSpacing,
+            });
+          });
+        });
+        if (!hasFittedOnceRef.current || showStubsChanged) {
+          // Instant on first load, briefly animated when stubs are toggled mid-session so
+          // the sudden change in extent doesn't feel like a jump-cut.
+          cy.animate({ fit: { eles: cy.elements(), padding: 48 } }, { duration: hasFittedOnceRef.current ? 300 : 0 });
+          hasFittedOnceRef.current = true;
+        }
+        previousNodeIdsRef.current = currentIds;
+        return;
+      }
+
+      // --- Legacy path below: only reached if graph.json predates precompute-layout.mjs ---
 
       if (!hasFittedOnceRef.current) {
         // Initial load: arrange everything and frame the camera once.
@@ -187,8 +252,6 @@ export default function GraphView({
         return;
       }
 
-      const showStubsChanged = previousShowStubsRef.current !== settings.showStubs;
-      previousShowStubsRef.current = settings.showStubs;
       const newIds = [...currentIds].filter((id) => !previousNodeIdsRef.current.has(id));
 
       if (showStubsChanged) {
@@ -250,7 +313,7 @@ export default function GraphView({
       previousNodeIdsRef.current = currentIds;
     }, LAYOUT_DEBOUNCE_MS);
     return () => clearTimeout(handle);
-  }, [elements, settings.layoutSpacing, settings.showStubs]);
+  }, [elements, settings.layoutSpacing, settings.showStubs, hasPrecomputedPositions, originalPositionById, positionCentroid]);
 
   useEffect(() => {
     const cy = cyRef.current;
@@ -275,6 +338,7 @@ export default function GraphView({
       if (fadeOthers) cy.elements().addClass('faded');
       cy.nodes().forEach((n) => {
         if (highlightedBandIds.has(n.id())) n.removeClass('faded').addClass('highlighted');
+        else if (connectedBandIds.has(n.id())) n.removeClass('faded');
       });
       cy.edges().forEach((e) => {
         if (highlightedEdgeIds.has(e.id())) e.removeClass('faded').addClass('highlighted');
@@ -308,7 +372,7 @@ export default function GraphView({
       }
     }, LAYOUT_DEBOUNCE_MS);
     return () => clearTimeout(handle);
-  }, [highlightedBandIds, highlightedEdgeIds, incomingEdgeIds, outgoingEdgeIds, fadeOthers, elements, resetToken]);
+  }, [highlightedBandIds, connectedBandIds, highlightedEdgeIds, incomingEdgeIds, outgoingEdgeIds, fadeOthers, elements, resetToken]);
 
   return (
     <CytoscapeComponent
@@ -317,6 +381,27 @@ export default function GraphView({
       style={{ width: '100%', height: '100%' }}
       minZoom={settings.minZoom}
       maxZoom={settings.maxZoom}
+      // Rendering-performance hints for the ~2000-node "show stub bands" case - all are
+      // init-only (read once when the underlying Cytoscape instance is constructed, not
+      // reactive to later prop changes), which is fine since they're meant to always be on
+      // rather than toggled at runtime:
+      //  - textureOnViewport: render a cached raster snapshot during camera pan/zoom instead
+      //    of redrawing every element live, then redraw crisply once that settles.
+      //  - motionBlur: reuses a blurred previous frame during interaction instead of a full
+      //    redraw, the officially recommended setting for large graphs.
+      //  - pixelRatio 1: renders at CSS pixel density instead of the display's native device
+      //    pixel ratio, so a 2x/3x retina screen isn't pushing 4-9x the actual pixel count
+      //    through the canvas every frame. Trade-off: slightly softer edges/text.
+      // Deliberately NOT using hideEdgesOnViewport: per cytoscape's own renderer source, its
+      // hide condition also fires while dragging a *node* (not just panning/zooming the
+      // camera), which made every edge vanish for the duration of any node drag.
+      textureOnViewport
+      motionBlur
+      // react-cytoscapejs's PropTypes for this are declared as oneOfType([string, object])
+      // (a bug in that library - cytoscape's own API accepts 'auto' or a number) - passing
+      // the numeral as a string satisfies its check and still reaches cytoscape correctly,
+      // since the value is forwarded to the constructor as-is and JS coerces it numerically.
+      pixelRatio="1"
       cy={(cy) => {
         if (cyRef.current === cy) return;
         cyRef.current = cy;

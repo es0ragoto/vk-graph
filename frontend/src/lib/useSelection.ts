@@ -10,6 +10,11 @@ function sameSelection(a: Selection, b: NonNullSelection): boolean {
 
 export interface HighlightSets {
   highlightedBandIds: Set<string>;
+  /** Band selection only: its direct neighbors (the other end of an incoming/outgoing edge) -
+   * exempt from fading like highlightedBandIds, but without that set's "this is the one you
+   * clicked" styling. Always empty for a musician selection (its whole path is already in
+   * highlightedBandIds). */
+  connectedBandIds: Set<string>;
   /** Musician-path edges (single color) - band selection never sets this. */
   highlightedEdgeIds: Set<string>;
   /** Band selection only: edges arriving at the selected band (target === id). */
@@ -21,35 +26,47 @@ export interface HighlightSets {
 
 const EMPTY_HIGHLIGHTS: HighlightSets = {
   highlightedBandIds: new Set(),
+  connectedBandIds: new Set(),
   highlightedEdgeIds: new Set(),
   incomingEdgeIds: new Set(),
   outgoingEdgeIds: new Set(),
   fadeOthers: false,
 };
 
-/** Bands highlight themselves plus every incident edge, split into incoming/outgoing by
- * direction, in place (no fade, no camera movement - see GraphView, which only re-fits the
- * camera when fadeOthers is set). Musicians highlight (and fade around, and re-center on)
- * their whole career path as a single color - direction there is already shown by the
- * path's own arrows, not by an in/out split relative to one node. */
+/** Bands highlight themselves plus every incident edge and neighbor, split into
+ * incoming/outgoing by direction, and fade everything else - with a large graph on screen,
+ * an unfaded neighborhood is the only way the selection reads clearly. Musicians highlight
+ * (and fade around, and re-center on) their whole career path as a single color - direction
+ * there is already shown by the path's own arrows, not by an in/out split relative to one
+ * node. Camera movement is handled separately in GraphView, which only re-fits when
+ * fadeOthers is set. */
 export function computeHighlights(selection: Selection, index: GraphIndex): HighlightSets {
   if (!selection) return EMPTY_HIGHLIGHTS;
 
   if (selection.type === 'band') {
     const incoming = new Set<string>();
     const outgoing = new Set<string>();
+    const neighbors = new Set<string>();
     for (const edgeId of index.edgeIdsByBand.get(selection.id) ?? []) {
       const edge = index.edgesById.get(edgeId);
       if (!edge) continue;
-      if (edge.target === selection.id) incoming.add(edgeId);
-      if (edge.source === selection.id) outgoing.add(edgeId);
+      if (edge.target === selection.id) {
+        incoming.add(edgeId);
+        neighbors.add(edge.source);
+      }
+      if (edge.source === selection.id) {
+        outgoing.add(edgeId);
+        neighbors.add(edge.target);
+      }
     }
+    neighbors.delete(selection.id); // a self-loop shouldn't un-fade "itself" twice over
     return {
       highlightedBandIds: new Set([selection.id]),
+      connectedBandIds: neighbors,
       highlightedEdgeIds: new Set(),
       incomingEdgeIds: incoming,
       outgoingEdgeIds: outgoing,
-      fadeOthers: false,
+      fadeOthers: true,
     };
   }
 
@@ -57,6 +74,7 @@ export function computeHighlights(selection: Selection, index: GraphIndex): High
   if (!musician) return EMPTY_HIGHLIGHTS;
   return {
     highlightedBandIds: new Set(musician.career.map((c) => c.band_id)),
+    connectedBandIds: new Set(),
     highlightedEdgeIds: new Set(musician.edge_ids),
     incomingEdgeIds: new Set(),
     outgoingEdgeIds: new Set(),

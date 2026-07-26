@@ -96,6 +96,7 @@ export default function App() {
           graph={graph}
           visibleBandIds={visibleBandIds}
           highlightedBandIds={highlights.highlightedBandIds}
+          connectedBandIds={highlights.connectedBandIds}
           highlightedEdgeIds={highlights.highlightedEdgeIds}
           incomingEdgeIds={highlights.incomingEdgeIds}
           outgoingEdgeIds={highlights.outgoingEdgeIds}

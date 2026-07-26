@@ -6,8 +6,12 @@ interface DisplaySettingsPanelProps {
   onChange: (next: GraphSettings) => void;
 }
 
+// Restricted to GraphSettings' number-valued keys, so a boolean field (like showStubs)
+// can't end up here by mistake - it belongs on its own control, not a range slider.
+type NumericSettingKey = { [K in keyof GraphSettings]: GraphSettings[K] extends number ? K : never }[keyof GraphSettings];
+
 interface SliderSpec {
-  key: keyof GraphSettings;
+  key: NumericSettingKey;
   label: string;
   min: number;
   max: number;
@@ -24,7 +28,7 @@ const SLIDERS: SliderSpec[] = [
 ];
 
 export default function DisplaySettingsPanel({ settings, onChange }: DisplaySettingsPanelProps) {
-  const handleChange = (key: keyof GraphSettings) => (e: ChangeEvent<HTMLInputElement>) => {
+  const handleChange = (key: NumericSettingKey) => (e: ChangeEvent<HTMLInputElement>) => {
     onChange({ ...settings, [key]: Number(e.target.value) });
   };
 
