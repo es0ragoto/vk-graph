@@ -40,6 +40,12 @@ function buildStylesheet(settings: GraphSettings): cytoscape.StylesheetJsonBlock
         width: settings.nodeSize,
         height: settings.nodeSize,
         'border-width': 0,
+        // Cytoscape's default z-index-compare ('auto') always draws every node above every
+        // edge, no matter what z-index says - it only breaks ties within the same element
+        // type. 'manual' makes actual z-index values apply across nodes and edges alike, so
+        // a highlighted edge (z-index 10 below) can render above a dimmed node in its way.
+        'z-index-compare': 'manual',
+        'z-index': 1,
       },
     },
     {
@@ -65,6 +71,8 @@ function buildStylesheet(settings: GraphSettings): cytoscape.StylesheetJsonBlock
         'target-arrow-color': '#999999',
         'arrow-scale': 0.8,
         opacity: 0.85,
+        'z-index-compare': 'manual',
+        'z-index': 0,
       },
     },
     {
