@@ -3,7 +3,7 @@ import type { GraphExport } from './types/graph';
 import { loadGraph } from './lib/loadGraph';
 import { buildGraphIndex } from './lib/graphIndex';
 import { useSelection } from './lib/useSelection';
-import { expandWithBandNeighbors, expandWithMusicianPath, allRealBandIds } from './lib/focus';
+import { expandWithBandNeighbors, expandWithMusicianPath, allRealBandIds, allBandIds } from './lib/focus';
 import { loadGraphSettings, saveGraphSettings, type GraphSettings } from './lib/graphSettings';
 import GraphView from './components/GraphView';
 import BandDetailPanel from './components/BandDetailPanel';
@@ -29,21 +29,28 @@ export default function App() {
   }, []);
 
   const index = useMemo(() => (graph ? buildGraphIndex(graph) : null), [graph]);
-  const realBandIds = useMemo(() => (index ? allRealBandIds(index) : null), [index]);
+  // "Show stub bands" swaps the baseline from just the crawled set to literally everything -
+  // otherwise stubs stay ephemeral (see below).
+  const baseBandIds = useMemo(
+    () => (index ? (settings.showStubs ? allBandIds(index) : allRealBandIds(index)) : null),
+    [index, settings.showStubs],
+  );
 
-  const { selection, selectBand, selectMusician, clearSelection, highlights } = useSelection(index);
+  const { selection, selectBand, selectMusician, clearSelection, goBack, canGoBack, highlights, resetToken } =
+    useSelection(index);
 
-  // Stubs are ephemeral: visible bands are always "every real band" plus whatever a stub
-  // neighbor/path the *current* selection pulls in - switching to a different selection (or
-  // clearing it) drops any stubs that aren't relevant anymore, rather than accumulating.
+  // Stubs are ephemeral: visible bands are always the base set (every real band, or every
+  // band at all if "show stub bands" is on) plus whatever a stub neighbor/path the *current*
+  // selection pulls in - switching to a different selection (or clearing it) drops any stubs
+  // that aren't relevant anymore, rather than accumulating.
   // The stableRef keeps the same Set reference when content is unchanged (e.g. selecting a
   // band with no stub neighbors), so GraphView's memoized layout doesn't do pointless work.
   const stableVisibleBandIdsRef = useRef<Set<string> | null>(null);
   const visibleBandIds = useMemo(() => {
-    if (!index || !realBandIds) return null;
-    let next = realBandIds;
-    if (selection?.type === 'band') next = expandWithBandNeighbors(realBandIds, selection.id, index);
-    else if (selection?.type === 'musician') next = expandWithMusicianPath(realBandIds, selection.id, index);
+    if (!index || !baseBandIds) return null;
+    let next = baseBandIds;
+    if (selection?.type === 'band') next = expandWithBandNeighbors(baseBandIds, selection.id, index);
+    else if (selection?.type === 'musician') next = expandWithMusicianPath(baseBandIds, selection.id, index);
 
     const prev = stableVisibleBandIdsRef.current;
     if (prev && prev.size === next.size && [...next].every((id) => prev.has(id))) {
@@ -51,7 +58,7 @@ export default function App() {
     }
     stableVisibleBandIdsRef.current = next;
     return next;
-  }, [index, realBandIds, selection]);
+  }, [index, baseBandIds, selection]);
 
   if (loadError) {
     return (
@@ -93,6 +100,7 @@ export default function App() {
           incomingEdgeIds={highlights.incomingEdgeIds}
           outgoingEdgeIds={highlights.outgoingEdgeIds}
           fadeOthers={highlights.fadeOthers}
+          resetToken={resetToken}
           settings={settings}
           onSelectBand={selectBand}
           onSelectEdge={handleSelectEdge}
@@ -101,13 +109,24 @@ export default function App() {
       <aside className="sidebar">
         <h1>Band Graph</h1>
         <SearchBox graph={graph} onSelectBand={selectBand} onSelectMusician={selectMusician} />
-        <button className="show-all-btn" onClick={clearSelection}>
-          Show all {realBandCount} crawled bands
-        </button>
+        <div className="toolbar">
+          <button className="back-btn" onClick={goBack} disabled={!canGoBack}>
+            ← Back
+          </button>
+          <button className="show-all-btn" onClick={clearSelection}>
+            Show all {realBandCount} crawled bands
+          </button>
+        </div>
         <DisplaySettingsPanel settings={settings} onChange={handleSettingsChange} />
         <p className="legend">
           {visibleRealCount} / {realBandCount} crawled bands shown
-          {visibleStubCount > 0 && <> (+{visibleStubCount} stub{visibleStubCount === 1 ? '' : 's'} on the current selection)</>}
+          {visibleStubCount > 0 && (
+            <>
+              {' '}
+              (+{visibleStubCount} stub{visibleStubCount === 1 ? '' : 's'}
+              {settings.showStubs ? '' : ' on the current selection'})
+            </>
+          )}
           <br />
           dashed border = stub: referenced by a career path but outside the crawled set
         </p>

@@ -58,7 +58,16 @@ def build_graph(state: CrawlState, source_base_url: str) -> dict:
                 "source_url": url, "formed_year": None, "disbanded_year": None, "stub": True, "member_ids": [],
             })
             continue
-        member_urls = {m["musician_url"] for m in [*raw["members"], *raw["former_members"]]}
+        # Current members first, then former members - each group in the page's own order -
+        # so the roster reads latest-first, same as the site's own Lineup/Former split.
+        # (De-duped by first appearance in case a URL somehow shows up in both lists.)
+        member_ids_ordered: list[str] = []
+        seen_member_ids: set[str] = set()
+        for member in [*raw["members"], *raw["former_members"]]:
+            mid = musician_id_by_url.get(member["musician_url"])
+            if mid and mid not in seen_member_ids:
+                member_ids_ordered.append(mid)
+                seen_member_ids.add(mid)
         bands.append({
             "id": band_id,
             "name": raw["name"],
@@ -67,7 +76,7 @@ def build_graph(state: CrawlState, source_base_url: str) -> dict:
             "formed_year": raw.get("formed_year"),
             "disbanded_year": raw.get("disbanded_year"),
             "stub": False,
-            "member_ids": sorted(musician_id_by_url[u] for u in member_urls if u in musician_id_by_url),
+            "member_ids": member_ids_ordered,
         })
     bands_by_id = {b["id"]: b for b in bands}
 
@@ -145,7 +154,12 @@ def build_graph(state: CrawlState, source_base_url: str) -> dict:
 
     for band_id, extra_ids in extra_members_by_band.items():
         band = bands_by_id[band_id]
-        band["member_ids"] = sorted(set(band["member_ids"]) | extra_ids)
+        # Append only - these are stragglers found solely via a musician's own career list
+        # (not the band page's member lists), with no page position of their own, so they
+        # go after the ordered current/former groups rather than disturbing that order.
+        new_ids = sorted(extra_ids.difference(band["member_ids"]))
+        if new_ids:
+            band["member_ids"] = band["member_ids"] + new_ids
 
     graph = {
         "meta": {

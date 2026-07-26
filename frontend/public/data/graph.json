@@ -1,7 +1,7 @@
 {
   "meta": {
     "schema_version": 1,
-    "generated_at": "2026-07-26T08:41:40Z",
+    "generated_at": "2026-07-26T12:09:41Z",
     "source_base_url": "https://vk.gy",
     "band_count": 1964,
     "musician_count": 904,
@@ -43,14 +43,14 @@
       "disbanded_year": 2009,
       "stub": false,
       "member_ids": [
-        "m-131-kouta",
-        "m-144-setsuki",
         "m-1866-yuu",
-        "m-399-yuuki-isogai",
-        "m-469-kasumi",
-        "m-5075-teriten",
         "m-6185-toki",
-        "m-81-roki"
+        "m-144-setsuki",
+        "m-131-kouta",
+        "m-469-kasumi",
+        "m-81-roki",
+        "m-5075-teriten",
+        "m-399-yuuki-isogai"
       ]
     },
     {
@@ -254,12 +254,12 @@
       "disbanded_year": 2001,
       "stub": false,
       "member_ids": [
+        "m-405-seiji",
         "m-2710-kohji",
         "m-2711-shinya",
         "m-2712-toshiyuki",
         "m-2713-shinsaku",
         "m-2714-daiki",
-        "m-405-seiji",
         "m-8203-yu-ta"
       ]
     },
@@ -273,8 +273,8 @@
       "stub": false,
       "member_ids": [
         "m-12491-shin-ichi",
-        "m-12493-mori",
         "m-14890-you",
+        "m-12493-mori",
         "m-402-seiya",
         "m-5118-tooru"
       ]
@@ -336,12 +336,12 @@
       "disbanded_year": 2008,
       "stub": false,
       "member_ids": [
+        "m-7243-shaka",
         "m-11995-taito",
         "m-1228-hiroki",
-        "m-461-shigure",
         "m-6548-maya",
-        "m-7243-shaka",
-        "m-7653-mura"
+        "m-7653-mura",
+        "m-461-shigure"
       ]
     },
     {
@@ -465,12 +465,12 @@
       "disbanded_year": 2001,
       "stub": false,
       "member_ids": [
-        "m-21064-glico",
         "m-34-kore",
-        "m-542-karen",
-        "m-544-toshiyuki",
         "m-663-dice",
-        "m-664-yuuji"
+        "m-544-toshiyuki",
+        "m-664-yuuji",
+        "m-542-karen",
+        "m-21064-glico"
       ]
     },
     {
@@ -608,8 +608,8 @@
         "m-5111-shin",
         "m-5913-aki",
         "m-5914-roi",
-        "m-5915-atsumaru",
-        "m-936-zecks"
+        "m-936-zecks",
+        "m-5915-atsumaru"
       ]
     },
     {
@@ -1383,16 +1383,16 @@
       "disbanded_year": 2022,
       "stub": false,
       "member_ids": [
-        "m-206-tera",
-        "m-258-jun",
-        "m-2940-jun-jun",
         "m-4076-isami",
-        "m-4077-noah",
+        "m-5736-ryou",
+        "m-206-tera",
         "m-4078-maya",
+        "m-4077-noah",
         "m-4079-go",
+        "m-258-jun",
         "m-4080-charinori",
         "m-4081-yamamura-yoshinori",
-        "m-5736-ryou"
+        "m-2940-jun-jun"
       ]
     },
     {
@@ -1488,11 +1488,11 @@
       "disbanded_year": null,
       "stub": false,
       "member_ids": [
-        "m-136-shio",
-        "m-285-pepa",
         "m-295-james-godfield",
+        "m-650-aki",
+        "m-285-pepa",
         "m-506-hidaka",
-        "m-650-aki"
+        "m-136-shio"
       ]
     },
     {
@@ -1910,18 +1910,18 @@
       "disbanded_year": null,
       "stub": false,
       "member_ids": [
-        "m-17233-yuki",
-        "m-17234-death-o",
-        "m-17235-zeef",
-        "m-19909-death-o",
-        "m-248-hyu-ga",
-        "m-382-ruiza",
         "m-5253-aki",
-        "m-5254-kei",
+        "m-382-ruiza",
         "m-562-john",
-        "m-6594-shinpei",
         "m-7879-sin",
-        "m-916-sho"
+        "m-5254-kei",
+        "m-248-hyu-ga",
+        "m-17233-yuki",
+        "m-6594-shinpei",
+        "m-19909-death-o",
+        "m-17234-death-o",
+        "m-916-sho",
+        "m-17235-zeef"
       ]
     },
     {
@@ -1945,13 +1945,13 @@
       "disbanded_year": 2009,
       "stub": false,
       "member_ids": [
-        "m-10244-jun",
+        "m-9358-kuroudo",
         "m-11287-shintarou",
-        "m-13150-ney",
-        "m-21798-nonpi",
         "m-310-sawamura-hideki",
+        "m-10244-jun",
+        "m-21798-nonpi",
         "m-79-kentz",
-        "m-9358-kuroudo"
+        "m-13150-ney"
       ]
     },
     {
@@ -2037,18 +2037,18 @@
       "disbanded_year": 2009,
       "stub": false,
       "member_ids": [
-        "m-126-majyu-lee-aki",
-        "m-14625-riyouichi",
-        "m-1643-misa",
-        "m-221-mikage",
-        "m-28251-sae",
-        "m-370-toki",
-        "m-3887-yuichiro-honma",
-        "m-4093-haku",
-        "m-604-kazuki",
         "m-6229-takuma",
+        "m-28251-sae",
+        "m-4093-haku",
+        "m-14625-riyouichi",
+        "m-370-toki",
+        "m-1643-misa",
         "m-6230-yoki",
-        "m-6548-maya"
+        "m-6548-maya",
+        "m-3887-yuichiro-honma",
+        "m-221-mikage",
+        "m-126-majyu-lee-aki",
+        "m-604-kazuki"
       ]
     },
     {
@@ -2401,11 +2401,11 @@
       "disbanded_year": 2015,
       "stub": false,
       "member_ids": [
-        "m-206-tera",
         "m-5393-naru",
         "m-6753-reki",
-        "m-6754-shion",
-        "m-941-may"
+        "m-941-may",
+        "m-206-tera",
+        "m-6754-shion"
       ]
     },
     {
@@ -2465,13 +2465,13 @@
       "disbanded_year": null,
       "stub": false,
       "member_ids": [
-        "m-198-rame",
-        "m-199-tero",
-        "m-29-san",
         "m-369-ice",
+        "m-29-san",
         "m-370-toki",
-        "m-371-sala",
-        "m-589-higiri"
+        "m-198-rame",
+        "m-589-higiri",
+        "m-199-tero",
+        "m-371-sala"
       ]
     },
     {
@@ -2533,10 +2533,10 @@
       "disbanded_year": null,
       "stub": false,
       "member_ids": [
-        "m-2713-shinsaku",
+        "m-7780-hidetora-miyata",
         "m-5193-takayuki-arai",
         "m-5952-hideki",
-        "m-7780-hidetora-miyata"
+        "m-2713-shinsaku"
       ]
     },
     {
@@ -2548,10 +2548,10 @@
       "disbanded_year": 2008,
       "stub": false,
       "member_ids": [
-        "m-2180-yagi",
-        "m-2786-haren",
         "m-4422-sora",
-        "m-504-takeru"
+        "m-504-takeru",
+        "m-2786-haren",
+        "m-2180-yagi"
       ]
     },
     {
@@ -2687,11 +2687,11 @@
       "stub": false,
       "member_ids": [
         "m-10358-gekka",
-        "m-11344-tadamitsu-furui",
+        "m-2713-shinsaku",
         "m-12486-440",
+        "m-11344-tadamitsu-furui",
         "m-12487-kouki",
-        "m-12488-sunao-nakamura",
-        "m-2713-shinsaku"
+        "m-12488-sunao-nakamura"
       ]
     },
     {
@@ -2752,11 +2752,11 @@
       "disbanded_year": 2007,
       "stub": false,
       "member_ids": [
-        "m-10939-rei",
-        "m-206-tera",
         "m-5931-yasuhi",
         "m-5932-yoshi",
-        "m-5933-daisuke"
+        "m-5933-daisuke",
+        "m-206-tera",
+        "m-10939-rei"
       ]
     },
     {
@@ -2904,14 +2904,14 @@
       "disbanded_year": 2006,
       "stub": false,
       "member_ids": [
-        "m-2099-yanagi",
         "m-2111-naoki",
-        "m-2786-haren",
+        "m-9308-zen",
         "m-33027-hisame",
         "m-504-takeru",
-        "m-6178-maa",
-        "m-9308-zen",
-        "m-9309-masa"
+        "m-9309-masa",
+        "m-2786-haren",
+        "m-2099-yanagi",
+        "m-6178-maa"
       ]
     },
     {
@@ -2923,15 +2923,15 @@
       "disbanded_year": 2025,
       "stub": false,
       "member_ids": [
-        "m-12186-hideki-satou",
         "m-15890-rei",
+        "m-692-ryousuke-yorita",
+        "m-5193-takayuki-arai",
+        "m-12186-hideki-satou",
+        "m-5952-hideki",
+        "m-2713-shinsaku",
         "m-19771-yo-hey",
         "m-19772-goo",
-        "m-2713-shinsaku",
-        "m-5193-takayuki-arai",
-        "m-5951-komaki",
-        "m-5952-hideki",
-        "m-692-ryousuke-yorita"
+        "m-5951-komaki"
       ]
     },
     {
@@ -3172,11 +3172,11 @@
       "disbanded_year": 1999,
       "stub": false,
       "member_ids": [
-        "m-125-yuuze",
-        "m-461-shigure",
-        "m-601-jun",
         "m-949-kazuki",
-        "m-950-mikicanary"
+        "m-950-mikicanary",
+        "m-125-yuuze",
+        "m-601-jun",
+        "m-461-shigure"
       ]
     },
     {
@@ -3251,11 +3251,11 @@
       "stub": false,
       "member_ids": [
         "m-17456-makoto",
+        "m-6897-ryo",
         "m-21673-ma-chi",
         "m-21674-shun",
-        "m-29167-yukito",
         "m-29168-tatsuya",
-        "m-6897-ryo"
+        "m-29167-yukito"
       ]
     },
     {
@@ -3363,10 +3363,10 @@
       "disbanded_year": 2006,
       "stub": false,
       "member_ids": [
-        "m-11429-jean-tohru-mannaley",
         "m-1937-kin",
-        "m-2713-shinsaku",
-        "m-5952-hideki"
+        "m-11429-jean-tohru-mannaley",
+        "m-5952-hideki",
+        "m-2713-shinsaku"
       ]
     },
     {
@@ -3511,23 +3511,23 @@
       "disbanded_year": 2018,
       "stub": false,
       "member_ids": [
-        "m-20432-wataru",
-        "m-206-tera",
-        "m-2112-neo",
-        "m-221-mikage",
-        "m-450-kaz",
-        "m-461-shigure",
         "m-5-riku",
+        "m-20432-wataru",
+        "m-78-jin",
+        "m-221-mikage",
         "m-504-takeru",
+        "m-8-akito",
         "m-76-shino",
         "m-77-towma-towma",
-        "m-78-jin",
-        "m-79-kentz",
-        "m-8-akito",
         "m-80-tomo",
+        "m-450-kaz",
+        "m-2112-neo",
+        "m-461-shigure",
+        "m-206-tera",
         "m-81-roki",
         "m-82-yuuri",
-        "m-9-reiya"
+        "m-9-reiya",
+        "m-79-kentz"
       ]
     },
     {
@@ -3817,9 +3817,9 @@
       "stub": false,
       "member_ids": [
         "m-22539-kentaro",
-        "m-4484-rio",
         "m-6589-touma",
-        "m-936-zecks"
+        "m-936-zecks",
+        "m-4484-rio"
       ]
     },
     {
@@ -3844,17 +3844,17 @@
       "disbanded_year": 2024,
       "stub": false,
       "member_ids": [
-        "m-205-yuu",
-        "m-5664-hotaru",
-        "m-6960-avel",
-        "m-7285-hakuya",
         "m-7287-takeru",
         "m-7288-ryo",
-        "m-7289-keita",
-        "m-7290-ryohei",
-        "m-7291-lyiek",
+        "m-205-yuu",
+        "m-9939-kenbo",
         "m-9704-tsubaki",
-        "m-9939-kenbo"
+        "m-5664-hotaru",
+        "m-7285-hakuya",
+        "m-7289-keita",
+        "m-6960-avel",
+        "m-7290-ryohei",
+        "m-7291-lyiek"
       ]
     },
     {
@@ -3866,9 +3866,9 @@
       "disbanded_year": null,
       "stub": false,
       "member_ids": [
-        "m-136-shio",
+        "m-583-kyuuchan",
         "m-28361-yuri",
-        "m-583-kyuuchan"
+        "m-136-shio"
       ]
     },
     {
@@ -3895,13 +3895,13 @@
       "stub": false,
       "member_ids": [
         "m-11253-ryouta",
-        "m-11608-kaz",
-        "m-16817-kokoro",
-        "m-20431-tukimi",
+        "m-2922-kai",
         "m-20432-wataru",
         "m-21281-kazuki",
         "m-27093-miu",
-        "m-2922-kai",
+        "m-20431-tukimi",
+        "m-16817-kokoro",
+        "m-11608-kaz",
         "m-7223-shin"
       ]
     },
@@ -3954,8 +3954,8 @@
       "member_ids": [
         "m-22127-hoshikage-yuusuke",
         "m-22128-misuzu",
-        "m-2565-shin",
-        "m-6553-yo"
+        "m-6553-yo",
+        "m-2565-shin"
       ]
     },
     {
@@ -4016,8 +4016,8 @@
       "disbanded_year": null,
       "stub": false,
       "member_ids": [
-        "m-6820-maya",
-        "m-7288-ryo"
+        "m-7288-ryo",
+        "m-6820-maya"
       ]
     },
     {
@@ -4438,10 +4438,10 @@
       "stub": false,
       "member_ids": [
         "m-100-lara",
+        "m-90-nao",
         "m-101-toya",
-        "m-102-atuki",
         "m-82-yuuri",
-        "m-90-nao"
+        "m-102-atuki"
       ]
     },
     {
@@ -4613,10 +4613,10 @@
       "disbanded_year": null,
       "stub": false,
       "member_ids": [
-        "m-16789-tenji-nagano",
-        "m-2565-shin",
         "m-7755-yuki",
-        "m-7850-kenji-nagamatsu"
+        "m-7850-kenji-nagamatsu",
+        "m-16789-tenji-nagano",
+        "m-2565-shin"
       ]
     },
     {
@@ -4652,14 +4652,14 @@
       "disbanded_year": null,
       "stub": false,
       "member_ids": [
-        "m-29116-takashi",
-        "m-5112-sho",
-        "m-587-milk",
+        "m-9577-akane",
         "m-6637-shinya",
         "m-6770-retsu",
-        "m-6772-issei",
+        "m-5112-sho",
         "m-77-towma-towma",
-        "m-9577-akane"
+        "m-587-milk",
+        "m-29116-takashi",
+        "m-6772-issei"
       ]
     },
     {
@@ -4719,13 +4719,13 @@
       "disbanded_year": 2000,
       "stub": false,
       "member_ids": [
-        "m-1187-masashi",
-        "m-15266-daijiro-nozawa",
-        "m-5368-yuji",
-        "m-7776-you-watanabe",
-        "m-7849-hibiki",
         "m-7850-kenji-nagamatsu",
-        "m-7851-yoshihiro"
+        "m-7776-you-watanabe",
+        "m-5368-yuji",
+        "m-7849-hibiki",
+        "m-7851-yoshihiro",
+        "m-1187-masashi",
+        "m-15266-daijiro-nozawa"
       ]
     },
     {
@@ -4925,22 +4925,22 @@
       "disbanded_year": null,
       "stub": false,
       "member_ids": [
+        "m-13-sui",
         "m-10238-hidezou",
+        "m-513-erina",
+        "m-1826-teru",
         "m-1027-yu",
+        "m-126-majyu-lee-aki",
+        "m-916-sho",
+        "m-405-seiji",
         "m-1081-rayx",
         "m-11-mizaly",
-        "m-1128-misogi-misogi",
-        "m-126-majyu-lee-aki",
-        "m-13-sui",
-        "m-1826-teru",
+        "m-917-hi-na",
         "m-2484-you",
-        "m-405-seiji",
-        "m-513-erina",
-        "m-6787-denka",
+        "m-1128-misogi-misogi",
         "m-78-jin",
         "m-806-masashi",
-        "m-916-sho",
-        "m-917-hi-na"
+        "m-6787-denka"
       ]
     },
     {
@@ -4988,11 +4988,11 @@
       "disbanded_year": null,
       "stub": false,
       "member_ids": [
-        "m-1069-yashiro",
-        "m-1070-lai",
         "m-372-hisui",
+        "m-616-yayoi",
         "m-6-kisaki",
-        "m-616-yayoi"
+        "m-1069-yashiro",
+        "m-1070-lai"
       ]
     },
     {
@@ -5016,13 +5016,13 @@
       "disbanded_year": 1998,
       "stub": false,
       "member_ids": [
+        "m-195-jui",
+        "m-2795-camus",
         "m-13132-lucia",
         "m-13134-iria",
         "m-13135-liana",
-        "m-13136-riki",
         "m-13137-kaikuu",
-        "m-195-jui",
-        "m-2795-camus"
+        "m-13136-riki"
       ]
     },
     {
@@ -5388,40 +5388,40 @@
       "disbanded_year": null,
       "stub": false,
       "member_ids": [
-        "m-124-haruka",
-        "m-1542-junya",
-        "m-1955-inori",
-        "m-205-yuu",
-        "m-206-tera",
-        "m-283-kyura",
-        "m-3362-tak",
-        "m-3363-maya",
-        "m-381-sin",
-        "m-414-rei",
-        "m-460-tomo",
-        "m-461-shigure",
-        "m-513-erina",
-        "m-5441-dokodemodora",
         "m-590-shun",
-        "m-593-white",
-        "m-594-tetsu",
-        "m-595-shi-no",
+        "m-513-erina",
+        "m-952-rei",
+        "m-1955-inori",
+        "m-3362-tak",
+        "m-8111-tsutomu",
+        "m-460-tomo",
         "m-596-hirofumi-shibuya",
+        "m-595-shi-no",
         "m-597-matsu",
+        "m-414-rei",
         "m-598-yuji",
         "m-599-fuay",
         "m-600-hiroshi",
+        "m-603-utsukushiibitsu",
+        "m-461-shigure",
         "m-601-jun",
         "m-602-toshiyuki",
-        "m-603-utsukushiibitsu",
         "m-604-kazuki",
+        "m-1542-junya",
+        "m-593-white",
         "m-6547-shaisuke",
-        "m-7154-matenrou-canou",
-        "m-8111-tsutomu",
+        "m-594-tetsu",
+        "m-5441-dokodemodora",
+        "m-9274-leaya",
+        "m-206-tera",
+        "m-205-yuu",
+        "m-3363-maya",
         "m-847-k-suke",
         "m-8984-hiryu",
-        "m-9274-leaya",
-        "m-952-rei"
+        "m-283-kyura",
+        "m-381-sin",
+        "m-124-haruka",
+        "m-7154-matenrou-canou"
       ]
     },
     {
@@ -5544,11 +5544,11 @@
       "disbanded_year": null,
       "stub": false,
       "member_ids": [
-        "m-26995-itaru",
         "m-29146-haruka",
+        "m-26995-itaru",
+        "m-936-zecks",
         "m-4734-tetsurou",
-        "m-6589-touma",
-        "m-936-zecks"
+        "m-6589-touma"
       ]
     },
     {
@@ -5755,9 +5755,9 @@
       "stub": false,
       "member_ids": [
         "m-2324-seiya",
-        "m-23332-hiro",
         "m-23333-yuuri",
-        "m-81-roki"
+        "m-81-roki",
+        "m-23332-hiro"
       ]
     },
     {
@@ -5954,9 +5954,9 @@
       "disbanded_year": null,
       "stub": false,
       "member_ids": [
+        "m-4005-takeru",
         "m-23569-ayumu",
-        "m-2565-shin",
-        "m-4005-takeru"
+        "m-2565-shin"
       ]
     },
     {
@@ -6067,15 +6067,15 @@
       "stub": false,
       "member_ids": [
         "m-12286-showie",
-        "m-12852-kiyoshi",
-        "m-15916-yuu",
-        "m-15917-aki",
-        "m-221-mikage",
         "m-2278-sho",
-        "m-2565-shin",
+        "m-954-leona",
+        "m-221-mikage",
+        "m-15916-yuu",
         "m-77-towma-towma",
-        "m-83-kazuhiro-shiga",
-        "m-954-leona"
+        "m-12852-kiyoshi",
+        "m-15917-aki",
+        "m-2565-shin",
+        "m-83-kazuhiro-shiga"
       ]
     },
     {
@@ -6255,15 +6255,15 @@
         "m-10911-fuyuki-shougaku",
         "m-10912-masataka-suwa",
         "m-10913-dai",
-        "m-10914-sat",
         "m-10915-toshi",
         "m-10916-takashi",
         "m-10917-masaaki-tateyama",
-        "m-10918-yuji-saito",
-        "m-34168-shoichi-koike",
         "m-4442-mu-ton",
         "m-692-ryousuke-yorita",
-        "m-7776-you-watanabe"
+        "m-7776-you-watanabe",
+        "m-10914-sat",
+        "m-10918-yuji-saito",
+        "m-34168-shoichi-koike"
       ]
     },
     {
@@ -6421,8 +6421,8 @@
       "disbanded_year": null,
       "stub": false,
       "member_ids": [
-        "m-13646-masahiko-yuki",
         "m-14578-noisy",
+        "m-13646-masahiko-yuki",
         "m-836-jun"
       ]
     },
@@ -6510,12 +6510,12 @@
       "disbanded_year": null,
       "stub": false,
       "member_ids": [
+        "m-6259-kiyoto",
         "m-2112-neo",
         "m-2170-kazuha",
+        "m-7534-detto",
         "m-4901-fujimaru",
-        "m-6259-kiyoto",
-        "m-7499-ichiyo",
-        "m-7534-detto"
+        "m-7499-ichiyo"
       ]
     },
     {
@@ -6821,11 +6821,11 @@
       "disbanded_year": null,
       "stub": false,
       "member_ids": [
-        "m-11-mizaly",
         "m-13-sui",
+        "m-11-mizaly",
+        "m-68-kyohei",
         "m-1809-junna",
-        "m-6787-denka",
-        "m-68-kyohei"
+        "m-6787-denka"
       ]
     },
     {
@@ -6972,12 +6972,12 @@
       "disbanded_year": 2002,
       "stub": false,
       "member_ids": [
-        "m-2285-yukino",
         "m-4251-iori",
-        "m-4253-mayuka",
-        "m-4788-kyrie",
+        "m-2285-yukino",
         "m-4799-rurika",
-        "m-936-zecks"
+        "m-936-zecks",
+        "m-4253-mayuka",
+        "m-4788-kyrie"
       ]
     },
     {
@@ -7112,12 +7112,12 @@
       "disbanded_year": 2014,
       "stub": false,
       "member_ids": [
-        "m-6249-sana",
-        "m-6340-nao",
-        "m-6394-charlie",
         "m-7287-takeru",
         "m-7288-ryo",
-        "m-7289-keita"
+        "m-7289-keita",
+        "m-6249-sana",
+        "m-6340-nao",
+        "m-6394-charlie"
       ]
     },
     {
@@ -7226,11 +7226,11 @@
       "disbanded_year": 2001,
       "stub": false,
       "member_ids": [
-        "m-198-rame",
-        "m-221-mikage",
-        "m-283-kyura",
         "m-4408-mayuka",
-        "m-557-shin"
+        "m-557-shin",
+        "m-283-kyura",
+        "m-198-rame",
+        "m-221-mikage"
       ]
     },
     {
@@ -7416,15 +7416,15 @@
       "disbanded_year": 2006,
       "stub": false,
       "member_ids": [
-        "m-14248-tachibana",
-        "m-14590-agie",
-        "m-16939-shingo",
         "m-23948-ko-ichi",
+        "m-16939-shingo",
+        "m-9208-yu-g1",
+        "m-14248-tachibana",
         "m-23949-yuki",
-        "m-3780-teruki",
-        "m-7214-junzo",
         "m-78-jin",
-        "m-9208-yu-g1"
+        "m-7214-junzo",
+        "m-14590-agie",
+        "m-3780-teruki"
       ]
     },
     {
@@ -7499,14 +7499,14 @@
       "disbanded_year": 2000,
       "stub": false,
       "member_ids": [
-        "m-102-atuki",
-        "m-403-motomi",
+        "m-892-tetsuya",
         "m-7959-akihito",
         "m-7960-limis",
+        "m-403-motomi",
         "m-7961-ayaka",
         "m-7963-shino",
         "m-82-yuuri",
-        "m-892-tetsuya"
+        "m-102-atuki"
       ]
     },
     {
@@ -7592,10 +7592,10 @@
       "disbanded_year": 1995,
       "stub": false,
       "member_ids": [
-        "m-136-shio",
-        "m-19581-kiku",
         "m-19582-katsuya",
-        "m-19583-yosi"
+        "m-19581-kiku",
+        "m-19583-yosi",
+        "m-136-shio"
       ]
     },
     {
@@ -7607,8 +7607,8 @@
       "disbanded_year": null,
       "stub": false,
       "member_ids": [
-        "m-14248-tachibana",
-        "m-78-jin"
+        "m-78-jin",
+        "m-14248-tachibana"
       ]
     },
     {
@@ -7871,11 +7871,11 @@
       "disbanded_year": 2013,
       "stub": false,
       "member_ids": [
-        "m-34743-shun-sasaki",
         "m-34744-nakky",
+        "m-7777-u1",
+        "m-34743-shun-sasaki",
         "m-34745-keita-shinbo",
-        "m-7776-you-watanabe",
-        "m-7777-u1"
+        "m-7776-you-watanabe"
       ]
     },
     {
@@ -7926,18 +7926,18 @@
       "disbanded_year": null,
       "stub": false,
       "member_ids": [
-        "m-12591-yohio",
-        "m-17880-u-zo",
-        "m-19665-yukihiro-fujimura",
-        "m-19666-takumi-samejima",
-        "m-20225-jon",
         "m-2361-gackt",
-        "m-2369-mia",
         "m-26259-takatora",
+        "m-12591-yohio",
+        "m-2369-mia",
         "m-28396-daichi-ayase",
         "m-28852-hidehiro",
-        "m-3467-shinya",
-        "m-9212-you"
+        "m-20225-jon",
+        "m-9212-you",
+        "m-19665-yukihiro-fujimura",
+        "m-19666-takumi-samejima",
+        "m-17880-u-zo",
+        "m-3467-shinya"
       ]
     },
     {
@@ -8097,9 +8097,9 @@
       "disbanded_year": 1995,
       "stub": false,
       "member_ids": [
-        "m-6-kisaki",
         "m-717-masami",
-        "m-718-shoji"
+        "m-718-shoji",
+        "m-6-kisaki"
       ]
     },
     {
@@ -8233,8 +8233,8 @@
       "disbanded_year": null,
       "stub": false,
       "member_ids": [
-        "m-13559-shuu",
         "m-13562-kunisada-jun",
+        "m-13559-shuu",
         "m-416-shuuma"
       ]
     },
@@ -8247,11 +8247,11 @@
       "disbanded_year": 2007,
       "stub": false,
       "member_ids": [
-        "m-14346-sayu",
-        "m-21786-shiina",
         "m-6489-rui",
+        "m-7-mizuki",
         "m-6491-kazuki",
-        "m-7-mizuki"
+        "m-14346-sayu",
+        "m-21786-shiina"
       ]
     },
     {
@@ -8289,8 +8289,8 @@
       "disbanded_year": 2010,
       "stub": false,
       "member_ids": [
-        "m-11287-shintarou",
         "m-16761-daishi",
+        "m-11287-shintarou",
         "m-21798-nonpi",
         "m-79-kentz"
       ]
@@ -8316,13 +8316,13 @@
       "disbanded_year": null,
       "stub": false,
       "member_ids": [
-        "m-12183-kazuki",
+        "m-6348-hajime",
+        "m-450-kaz",
+        "m-6605-hitsuki",
         "m-13198-d-hi",
         "m-17624-motoi",
-        "m-450-kaz",
-        "m-6348-hajime",
+        "m-12183-kazuki",
         "m-6349-zansuh",
-        "m-6605-hitsuki",
         "m-78-jin"
       ]
     },
@@ -8361,15 +8361,15 @@
       "disbanded_year": 2007,
       "stub": false,
       "member_ids": [
-        "m-2372-sugiya",
+        "m-4097-hitomi",
+        "m-5599-sana",
         "m-255-ryouki",
+        "m-2372-sugiya",
+        "m-4096-soan",
+        "m-76-shino",
         "m-4042-takumi-coma",
         "m-4091-zill",
-        "m-4096-soan",
-        "m-4097-hitomi",
-        "m-4360-nell-nell",
-        "m-5599-sana",
-        "m-76-shino"
+        "m-4360-nell-nell"
       ]
     },
     {
@@ -8381,13 +8381,13 @@
       "disbanded_year": 2003,
       "stub": false,
       "member_ids": [
-        "m-1024-kuzuki",
         "m-13-sui",
-        "m-13582-mito",
-        "m-2343-kyouka",
         "m-2344-ran",
+        "m-2343-kyouka",
+        "m-1024-kuzuki",
         "m-2869-yuki",
-        "m-2870-kairi"
+        "m-2870-kairi",
+        "m-13582-mito"
       ]
     },
     {
@@ -8424,9 +8424,9 @@
       "stub": false,
       "member_ids": [
         "m-38-yukkie",
-        "m-401-shiki",
         "m-402-seiya",
-        "m-43-rai"
+        "m-43-rai",
+        "m-401-shiki"
       ]
     },
     {
@@ -8475,15 +8475,15 @@
       "disbanded_year": 2003,
       "stub": false,
       "member_ids": [
-        "m-123-rita",
         "m-4524-karuna",
         "m-4525-aiki",
         "m-4526-mihiro",
-        "m-4527-ken",
-        "m-4528-kikyou",
         "m-461-shigure",
+        "m-952-rei",
+        "m-123-rita",
         "m-950-mikicanary",
-        "m-952-rei"
+        "m-4527-ken",
+        "m-4528-kikyou"
       ]
     },
     {
@@ -8509,9 +8509,9 @@
       "member_ids": [
         "m-123-rita",
         "m-3495-hiroaki",
+        "m-461-shigure",
         "m-4132-atsushi",
         "m-4524-karuna",
-        "m-461-shigure",
         "m-8750-wataru"
       ]
     },
@@ -8524,11 +8524,11 @@
       "disbanded_year": 2015,
       "stub": false,
       "member_ids": [
+        "m-4085-nanase-yuu",
         "m-26099-hiromaru",
-        "m-27076-jitan",
         "m-27077-shige",
-        "m-27078-yoshio",
-        "m-4085-nanase-yuu"
+        "m-27076-jitan",
+        "m-27078-yoshio"
       ]
     },
     {
@@ -8555,8 +8555,8 @@
       "disbanded_year": null,
       "stub": false,
       "member_ids": [
-        "m-136-shio",
-        "m-650-aki"
+        "m-650-aki",
+        "m-136-shio"
       ]
     },
     {
@@ -8617,14 +8617,14 @@
       "disbanded_year": 2017,
       "stub": false,
       "member_ids": [
-        "m-11613-hashirama-tsuyoshi",
-        "m-2112-neo",
-        "m-310-sawamura-hideki",
+        "m-6259-kiyoto",
         "m-4335-jewelry-brand-x",
-        "m-5063-jin",
+        "m-11613-hashirama-tsuyoshi",
         "m-5199-yuusuke",
-        "m-5805-yu",
-        "m-6259-kiyoto"
+        "m-5063-jin",
+        "m-310-sawamura-hideki",
+        "m-2112-neo",
+        "m-5805-yu"
       ]
     },
     {
@@ -8746,9 +8746,9 @@
       "disbanded_year": 2005,
       "stub": false,
       "member_ids": [
+        "m-7850-kenji-nagamatsu",
         "m-16621-ju-ken",
-        "m-5368-yuji",
-        "m-7850-kenji-nagamatsu"
+        "m-5368-yuji"
       ]
     },
     {
@@ -8906,18 +8906,18 @@
       "disbanded_year": null,
       "stub": false,
       "member_ids": [
-        "m-153-jun-jun",
         "m-195-jui",
-        "m-199-tero",
         "m-203-toya",
-        "m-24238-kanade",
-        "m-24770-tatsuhiro-endo",
+        "m-153-jun-jun",
+        "m-743-tsunehito",
+        "m-199-tero",
+        "m-33601-shunji",
         "m-2565-shin",
         "m-2770-tumi",
-        "m-33601-shunji",
         "m-3985-yuchi",
+        "m-24770-tatsuhiro-endo",
         "m-4094-shingo",
-        "m-743-tsunehito"
+        "m-24238-kanade"
       ]
     },
     {
@@ -8991,9 +8991,9 @@
       "disbanded_year": 2013,
       "stub": false,
       "member_ids": [
-        "m-34061-yashige",
+        "m-450-kaz",
         "m-34062-itsuki",
-        "m-450-kaz"
+        "m-34061-yashige"
       ]
     },
     {
@@ -9155,11 +9155,11 @@
       "stub": false,
       "member_ids": [
         "m-4251-iori",
-        "m-4395-miyabi",
-        "m-4798-rei",
-        "m-4799-rurika",
         "m-4800-sauzaa",
-        "m-936-zecks"
+        "m-936-zecks",
+        "m-4395-miyabi",
+        "m-4799-rurika",
+        "m-4798-rei"
       ]
     },
     {
@@ -9428,9 +9428,9 @@
       "disbanded_year": null,
       "stub": false,
       "member_ids": [
-        "m-206-tera",
         "m-4079-go",
-        "m-6403-ko-ji"
+        "m-6403-ko-ji",
+        "m-206-tera"
       ]
     },
     {
@@ -9600,15 +9600,15 @@
       "disbanded_year": 2006,
       "stub": false,
       "member_ids": [
+        "m-418-kanna",
         "m-11030-hisaki",
-        "m-11031-kyouei",
-        "m-15558-misawa",
-        "m-15560-masami",
         "m-15561-keirin",
         "m-15562-garaku",
         "m-15563-tonki",
         "m-2944-atushi",
-        "m-418-kanna"
+        "m-11031-kyouei",
+        "m-15558-misawa",
+        "m-15560-masami"
       ]
     },
     {
@@ -9744,10 +9744,10 @@
       "disbanded_year": 2004,
       "stub": false,
       "member_ids": [
-        "m-136-shio",
-        "m-137-matoi",
+        "m-5-riku",
         "m-34-kore",
-        "m-5-riku"
+        "m-136-shio",
+        "m-137-matoi"
       ]
     },
     {
@@ -9934,14 +9934,14 @@
       "disbanded_year": 2006,
       "stub": false,
       "member_ids": [
+        "m-6500-rikiya",
+        "m-6245-soumu",
+        "m-936-zecks",
+        "m-5915-atsumaru",
+        "m-7684-kaine",
         "m-4799-rurika",
         "m-4800-sauzaa",
-        "m-5915-atsumaru",
-        "m-6245-soumu",
-        "m-6500-rikiya",
-        "m-6520-kano",
-        "m-7684-kaine",
-        "m-936-zecks"
+        "m-6520-kano"
       ]
     },
     {
@@ -9953,15 +9953,15 @@
       "disbanded_year": 2024,
       "stub": false,
       "member_ids": [
-        "m-1637-yuta",
-        "m-16405-yuzuha",
-        "m-17914-kazuki",
-        "m-18457-sekai",
-        "m-9959-suga",
         "m-9960-atto",
         "m-9961-junu",
+        "m-17914-kazuki",
+        "m-16405-yuzuha",
         "m-9962-zero",
-        "m-9963-masato"
+        "m-9963-masato",
+        "m-1637-yuta",
+        "m-9959-suga",
+        "m-18457-sekai"
       ]
     },
     {
@@ -10247,13 +10247,13 @@
       "disbanded_year": 2003,
       "stub": false,
       "member_ids": [
-        "m-1292-izumi-izumi",
-        "m-1482-shinya",
-        "m-2713-shinsaku",
-        "m-2887-tadafumi-ikeda",
         "m-5950-yu-ichi",
+        "m-2887-tadafumi-ikeda",
+        "m-5952-hideki",
+        "m-2713-shinsaku",
         "m-5951-komaki",
-        "m-5952-hideki"
+        "m-1292-izumi-izumi",
+        "m-1482-shinya"
       ]
     },
     {
@@ -10290,9 +10290,9 @@
       "disbanded_year": 2003,
       "stub": false,
       "member_ids": [
-        "m-10730-naruki",
-        "m-798-yui",
         "m-8429-kei",
+        "m-798-yui",
+        "m-10730-naruki",
         "m-9-reiya"
       ]
     },
@@ -10305,11 +10305,11 @@
       "disbanded_year": 2007,
       "stub": false,
       "member_ids": [
-        "m-15780-yosuke",
         "m-15781-shou",
-        "m-29224-sena",
+        "m-6751-luu",
         "m-371-sala",
-        "m-6751-luu"
+        "m-29224-sena",
+        "m-15780-yosuke"
       ]
     },
     {
@@ -10577,19 +10577,19 @@
       "stub": false,
       "member_ids": [
         "m-15890-rei",
-        "m-15891-aki",
-        "m-15892-shigeo-yokogi",
-        "m-15893-shunichi-sakata",
-        "m-15894-makoto",
-        "m-21058-yanagi",
-        "m-21391-masayuki-osada",
-        "m-22903-osamu-ayabuki",
-        "m-25764-masuku",
-        "m-26415-hiroyuki-ohdachi",
         "m-26416-yuya-komatsu",
+        "m-21391-masayuki-osada",
+        "m-25764-masuku",
+        "m-22903-osamu-ayabuki",
+        "m-15892-shigeo-yokogi",
+        "m-26415-hiroyuki-ohdachi",
+        "m-21058-yanagi",
+        "m-15893-shunichi-sakata",
         "m-2713-shinsaku",
         "m-30168-takanari-ogawa",
-        "m-9593-keitaro-uesugi"
+        "m-15894-makoto",
+        "m-9593-keitaro-uesugi",
+        "m-15891-aki"
       ]
     },
     {
@@ -10614,11 +10614,11 @@
       "stub": false,
       "member_ids": [
         "m-100-lara",
-        "m-11639-kou",
         "m-5227-zero",
-        "m-6382-johannes",
         "m-82-yuuri",
-        "m-96-naruka"
+        "m-96-naruka",
+        "m-6382-johannes",
+        "m-11639-kou"
       ]
     },
     {
@@ -10818,11 +10818,11 @@
       "disbanded_year": 2008,
       "stub": false,
       "member_ids": [
-        "m-13692-shinya",
-        "m-137-matoi",
         "m-142-nao",
+        "m-13692-shinya",
+        "m-3238-toshihiro-kawachi",
         "m-145-takaya",
-        "m-3238-toshihiro-kawachi"
+        "m-137-matoi"
       ]
     },
     {
@@ -11069,19 +11069,19 @@
       "disbanded_year": null,
       "stub": false,
       "member_ids": [
-        "m-126-majyu-lee-aki",
-        "m-1826-teru",
-        "m-20406-shoyo",
-        "m-2231-rucy",
-        "m-2232-daisuke",
-        "m-2233-zin",
-        "m-26806-yu-ri",
-        "m-30086-yosuke-ibuki",
         "m-6011-kuze",
-        "m-68-kyohei",
         "m-728-hizaki",
+        "m-1826-teru",
+        "m-68-kyohei",
+        "m-126-majyu-lee-aki",
+        "m-2233-zin",
+        "m-20406-shoyo",
+        "m-26806-yu-ri",
+        "m-806-masashi",
+        "m-2231-rucy",
+        "m-30086-yosuke-ibuki",
         "m-781-yuki",
-        "m-806-masashi"
+        "m-2232-daisuke"
       ]
     },
     {
@@ -11437,9 +11437,9 @@
       "disbanded_year": null,
       "stub": false,
       "member_ids": [
-        "m-461-shigure",
-        "m-6548-maya",
         "m-8853-kasuga",
+        "m-6548-maya",
+        "m-461-shigure",
         "m-967-kyouya"
       ]
     },
@@ -11452,10 +11452,10 @@
       "disbanded_year": 2002,
       "stub": false,
       "member_ids": [
-        "m-1024-kuzuki",
         "m-13-sui",
-        "m-2335-shedde",
-        "m-2336-mei"
+        "m-1024-kuzuki",
+        "m-2336-mei",
+        "m-2335-shedde"
       ]
     },
     {
@@ -11515,13 +11515,13 @@
       "disbanded_year": 2002,
       "stub": false,
       "member_ids": [
-        "m-137-matoi",
+        "m-5-riku",
         "m-416-shuuma",
         "m-417-hagusa",
+        "m-137-matoi",
         "m-418-kanna",
         "m-419-yurine",
-        "m-420-aika",
-        "m-5-riku"
+        "m-420-aika"
       ]
     },
     {
@@ -11596,13 +11596,13 @@
       "disbanded_year": 2010,
       "stub": false,
       "member_ids": [
-        "m-136-shio",
-        "m-143-erize",
-        "m-3157-yasumasa",
+        "m-7572-toshimune",
         "m-33-masahiro",
-        "m-34-kore",
+        "m-143-erize",
+        "m-136-shio",
         "m-6278-yami",
-        "m-7572-toshimune"
+        "m-34-kore",
+        "m-3157-yasumasa"
       ]
     },
     {
@@ -11782,27 +11782,27 @@
       "disbanded_year": null,
       "stub": false,
       "member_ids": [
-        "m-11-mizaly",
-        "m-12753-maaya",
-        "m-128-eiji",
-        "m-153-jun-jun",
-        "m-1643-misa",
-        "m-196-shun",
         "m-198-rame",
-        "m-199-tero",
-        "m-221-mikage",
-        "m-23-miyawaki-wataru",
-        "m-2319-ryouhei",
-        "m-283-kyura",
-        "m-29-san",
-        "m-370-toki",
-        "m-371-sala",
-        "m-372-hisui",
-        "m-45-yukihiro",
-        "m-47-shun",
         "m-6-kisaki",
         "m-6233-seri-kanata",
-        "m-6882-shin"
+        "m-12753-maaya",
+        "m-128-eiji",
+        "m-23-miyawaki-wataru",
+        "m-372-hisui",
+        "m-153-jun-jun",
+        "m-1643-misa",
+        "m-2319-ryouhei",
+        "m-45-yukihiro",
+        "m-11-mizaly",
+        "m-196-shun",
+        "m-6882-shin",
+        "m-29-san",
+        "m-370-toki",
+        "m-283-kyura",
+        "m-221-mikage",
+        "m-47-shun",
+        "m-371-sala",
+        "m-199-tero"
       ]
     },
     {
@@ -11814,24 +11814,24 @@
       "disbanded_year": null,
       "stub": false,
       "member_ids": [
-        "m-13-sui",
-        "m-153-jun-jun",
-        "m-194-ryota",
         "m-195-jui",
-        "m-221-mikage",
-        "m-2373-hayato-miyama",
-        "m-283-kyura",
-        "m-2889-ryu",
-        "m-3016-atsushi",
         "m-3238-toshihiro-kawachi",
         "m-3239-yasuaki-miyaji",
-        "m-3240-yoshitsugu-nakamura",
-        "m-3242-jack",
-        "m-383-shion",
+        "m-6-kisaki",
+        "m-194-ryota",
+        "m-13-sui",
         "m-494-satsuki",
         "m-513-erina",
+        "m-2889-ryu",
         "m-548-shinobu",
-        "m-6-kisaki"
+        "m-153-jun-jun",
+        "m-3240-yoshitsugu-nakamura",
+        "m-3242-jack",
+        "m-283-kyura",
+        "m-221-mikage",
+        "m-383-shion",
+        "m-3016-atsushi",
+        "m-2373-hayato-miyama"
       ]
     },
     {
@@ -11843,35 +11843,35 @@
       "disbanded_year": null,
       "stub": false,
       "member_ids": [
-        "m-153-jun-jun",
-        "m-16169-iyoda-kohei",
-        "m-16362-syu",
-        "m-166-iori",
-        "m-1918-hikari-shiina",
-        "m-194-ryota",
-        "m-195-jui",
-        "m-20964-ryoji",
-        "m-21013-saki",
-        "m-27859-keiko-kanie",
-        "m-282-akira",
-        "m-3016-atsushi",
-        "m-3075-taka",
-        "m-3238-toshihiro-kawachi",
-        "m-3782-miku",
-        "m-382-ruiza",
-        "m-5157-hal",
-        "m-529-ray",
-        "m-548-shinobu",
         "m-6-kisaki",
+        "m-195-jui",
         "m-6551-sono",
+        "m-3075-taka",
+        "m-282-akira",
+        "m-1918-hikari-shiina",
+        "m-9796-danchou",
         "m-6942-d13",
-        "m-6943-yo-shmeer",
-        "m-728-hizaki",
-        "m-7766-sena",
-        "m-8696-daishi-kajinaga",
         "m-881-ryou",
+        "m-5157-hal",
         "m-8850-aoi-kondo",
-        "m-9796-danchou"
+        "m-3782-miku",
+        "m-8696-daishi-kajinaga",
+        "m-27859-keiko-kanie",
+        "m-529-ray",
+        "m-21013-saki",
+        "m-728-hizaki",
+        "m-153-jun-jun",
+        "m-166-iori",
+        "m-548-shinobu",
+        "m-3238-toshihiro-kawachi",
+        "m-16169-iyoda-kohei",
+        "m-6943-yo-shmeer",
+        "m-16362-syu",
+        "m-382-ruiza",
+        "m-7766-sena",
+        "m-20964-ryoji",
+        "m-194-ryota",
+        "m-3016-atsushi"
       ]
     },
     {
@@ -12191,10 +12191,10 @@
       "disbanded_year": null,
       "stub": false,
       "member_ids": [
-        "m-17982-tatsuya",
         "m-3038-kenji-roa",
-        "m-6596-yuu",
-        "m-77-towma-towma"
+        "m-77-towma-towma",
+        "m-17982-tatsuya",
+        "m-6596-yuu"
       ]
     },
     {
@@ -12230,16 +12230,16 @@
       "disbanded_year": 2008,
       "stub": false,
       "member_ids": [
+        "m-5791-jill",
         "m-10097-eishi",
         "m-10098-ryota",
-        "m-10099-narukaze",
-        "m-10100-yukkey",
-        "m-10101-makoto",
-        "m-371-sala",
         "m-447-ray",
-        "m-5791-jill",
+        "m-6751-luu",
+        "m-10099-narukaze",
         "m-5905-hiro",
-        "m-6751-luu"
+        "m-10100-yukkey",
+        "m-371-sala",
+        "m-10101-makoto"
       ]
     },
     {
@@ -12312,12 +12312,12 @@
       "disbanded_year": 1997,
       "stub": false,
       "member_ids": [
-        "m-136-shio",
         "m-568-kyo",
         "m-569-kaoru",
         "m-570-die",
+        "m-6-kisaki",
         "m-571-shinya",
-        "m-6-kisaki"
+        "m-136-shio"
       ]
     },
     {
@@ -12669,12 +12669,12 @@
       "disbanded_year": 1994,
       "stub": false,
       "member_ids": [
-        "m-19585-masanori",
-        "m-19586-hiroya",
         "m-3213-yosshinn",
         "m-3214-yasunori",
+        "m-19585-masanori",
         "m-3215-toshiya",
-        "m-6-kisaki"
+        "m-6-kisaki",
+        "m-19586-hiroya"
       ]
     },
     {
@@ -12775,9 +12775,9 @@
         "m-2888-saya",
         "m-2889-ryu",
         "m-3034-yoshihiro-yamamura",
+        "m-7944-takuma",
         "m-3313-koju",
-        "m-79-kentz",
-        "m-7944-takuma"
+        "m-79-kentz"
       ]
     },
     {
@@ -12887,13 +12887,13 @@
       "disbanded_year": 2008,
       "stub": false,
       "member_ids": [
-        "m-21834-natsuki",
-        "m-21847-hifumi",
-        "m-21896-toshiya",
         "m-26843-taku",
+        "m-4095-vivi",
+        "m-21896-toshiya",
+        "m-21847-hifumi",
         "m-28774-aito",
-        "m-371-sala",
-        "m-4095-vivi"
+        "m-21834-natsuki",
+        "m-371-sala"
       ]
     },
     {
@@ -12941,8 +12941,8 @@
       "disbanded_year": 1994,
       "stub": false,
       "member_ids": [
-        "m-3211-miyuu",
         "m-3212-maki",
+        "m-3211-miyuu",
         "m-6-kisaki"
       ]
     },
@@ -13129,14 +13129,14 @@
       "disbanded_year": 2016,
       "stub": false,
       "member_ids": [
-        "m-10-yushi",
-        "m-11-mizaly",
         "m-13-sui",
-        "m-5-riku",
-        "m-6-kisaki",
+        "m-11-mizaly",
         "m-68-kyohei",
-        "m-7-mizuki",
+        "m-6-kisaki",
+        "m-10-yushi",
+        "m-5-riku",
         "m-8-akito",
+        "m-7-mizuki",
         "m-9-reiya"
       ]
     },
@@ -13221,13 +13221,13 @@
       "disbanded_year": null,
       "stub": false,
       "member_ids": [
-        "m-4052-yuutarou",
-        "m-5171-uj",
         "m-5238-yuki",
-        "m-5860-kili",
-        "m-6499-suzune",
         "m-6589-touma",
-        "m-936-zecks"
+        "m-5171-uj",
+        "m-6499-suzune",
+        "m-5860-kili",
+        "m-936-zecks",
+        "m-4052-yuutarou"
       ]
     },
     {
@@ -13263,14 +13263,14 @@
       "disbanded_year": null,
       "stub": false,
       "member_ids": [
+        "m-790-chihiro",
         "m-2299-yuu",
         "m-2302-taka",
-        "m-2303-hiro",
-        "m-24055-yasuhiro",
         "m-30928-yakiboy",
         "m-320-ryu",
-        "m-6339-sho",
-        "m-790-chihiro"
+        "m-24055-yasuhiro",
+        "m-2303-hiro",
+        "m-6339-sho"
       ]
     },
     {
@@ -13456,8 +13456,8 @@
       "disbanded_year": null,
       "stub": false,
       "member_ids": [
-        "m-11-mizaly",
         "m-3692-iori",
+        "m-11-mizaly",
         "m-3693-saki",
         "m-3694-mizuki"
       ]
@@ -13573,11 +13573,11 @@
       "disbanded_year": 2014,
       "stub": false,
       "member_ids": [
+        "m-4346-makoto-koshinaka",
         "m-13646-masahiko-yuki",
         "m-13647-atsuro",
         "m-13648-tomonori-taguchi",
-        "m-13649-toru-abe",
-        "m-4346-makoto-koshinaka"
+        "m-13649-toru-abe"
       ]
     },
     {
@@ -13589,19 +13589,19 @@
       "disbanded_year": null,
       "stub": false,
       "member_ids": [
-        "m-102-atuki",
-        "m-11639-kou",
         "m-138-hina",
         "m-140-maki",
-        "m-141-kaede",
-        "m-18457-sekai",
-        "m-196-shun",
         "m-278-toki",
-        "m-283-kyura",
+        "m-82-yuuri",
+        "m-196-shun",
         "m-513-erina",
         "m-514-masato",
+        "m-11639-kou",
         "m-658-youichi",
-        "m-82-yuuri"
+        "m-18457-sekai",
+        "m-102-atuki",
+        "m-141-kaede",
+        "m-283-kyura"
       ]
     },
     {
@@ -13652,9 +13652,9 @@
       "stub": false,
       "member_ids": [
         "m-1820-kazuno",
-        "m-28854-yu-to",
         "m-6321-nagi",
-        "m-7064-takuma"
+        "m-7064-takuma",
+        "m-28854-yu-to"
       ]
     },
     {
@@ -13690,14 +13690,14 @@
       "disbanded_year": 2001,
       "stub": false,
       "member_ids": [
-        "m-12616-eishi",
-        "m-13132-lucia",
         "m-195-jui",
         "m-27458-junya-oikawa",
-        "m-2795-camus",
-        "m-8265-ruka",
         "m-937-aki",
-        "m-938-desa"
+        "m-12616-eishi",
+        "m-2795-camus",
+        "m-938-desa",
+        "m-13132-lucia",
+        "m-8265-ruka"
       ]
     },
     {
@@ -14293,15 +14293,15 @@
       "disbanded_year": 2016,
       "stub": false,
       "member_ids": [
-        "m-136-shio",
-        "m-207-zodd",
         "m-282-akira",
+        "m-663-dice",
         "m-283-kyura",
-        "m-285-pepa",
-        "m-286-mikoto",
         "m-368-kouji-uryuu",
+        "m-207-zodd",
         "m-580-ena",
-        "m-663-dice"
+        "m-136-shio",
+        "m-286-mikoto",
+        "m-285-pepa"
       ]
     },
     {
@@ -14460,10 +14460,10 @@
       "disbanded_year": 2002,
       "stub": false,
       "member_ids": [
-        "m-140-maki",
         "m-403-motomi",
-        "m-404-mizuho",
-        "m-8-akito"
+        "m-8-akito",
+        "m-140-maki",
+        "m-404-mizuho"
       ]
     },
     {
@@ -14475,13 +14475,13 @@
       "disbanded_year": null,
       "stub": false,
       "member_ids": [
-        "m-13916-yuhina",
-        "m-2151-atsushi",
-        "m-2863-nao",
-        "m-504-takeru",
         "m-6177-gene",
-        "m-7270-sinki",
         "m-8891-shiki",
+        "m-2151-atsushi",
+        "m-7270-sinki",
+        "m-13916-yuhina",
+        "m-504-takeru",
+        "m-2863-nao",
         "m-9285-696-mukuro"
       ]
     },
@@ -14519,13 +14519,13 @@
       "disbanded_year": 2013,
       "stub": false,
       "member_ids": [
-        "m-10-yushi",
-        "m-11-mizaly",
-        "m-12-leda",
-        "m-126-majyu-lee-aki",
         "m-13-sui",
+        "m-11-mizaly",
         "m-14-chikage-chikage",
-        "m-15-hyoga-hyoga"
+        "m-15-hyoga-hyoga",
+        "m-10-yushi",
+        "m-12-leda",
+        "m-126-majyu-lee-aki"
       ]
     },
     {
@@ -14626,21 +14626,21 @@
       "disbanded_year": null,
       "stub": false,
       "member_ids": [
+        "m-6253-l",
         "m-16560-tsurumai-mero",
+        "m-24222-yu-sui",
+        "m-7543-azuki",
+        "m-4880-naoki",
+        "m-3400-scarface",
+        "m-6260-yuhma",
+        "m-504-takeru",
+        "m-6261-nao",
+        "m-4551-masahito",
+        "m-4491-byou",
         "m-1665-tomoya",
         "m-16997-kaito",
         "m-2180-yagi",
-        "m-24222-yu-sui",
-        "m-248-hyu-ga",
-        "m-3400-scarface",
-        "m-4491-byou",
-        "m-4551-masahito",
-        "m-4880-naoki",
-        "m-504-takeru",
-        "m-6253-l",
-        "m-6260-yuhma",
-        "m-6261-nao",
-        "m-7543-azuki"
+        "m-248-hyu-ga"
       ]
     },
     {
@@ -14773,15 +14773,15 @@
       "disbanded_year": 2008,
       "stub": false,
       "member_ids": [
-        "m-1024-kuzuki",
-        "m-1025-setsuna",
+        "m-13-sui",
         "m-1026-rukia",
         "m-11-mizaly",
+        "m-1025-setsuna",
+        "m-1024-kuzuki",
+        "m-815-shii",
         "m-1220-chuuta",
         "m-1221-ryou",
-        "m-1222-sai",
-        "m-13-sui",
-        "m-815-shii"
+        "m-1222-sai"
       ]
     },
     {
@@ -14975,27 +14975,27 @@
       "disbanded_year": null,
       "stub": false,
       "member_ids": [
-        "m-14694-matarow",
-        "m-194-ryota",
-        "m-2096-a-o-i",
-        "m-20970-kouki",
         "m-282-akira",
-        "m-297-hiro",
-        "m-3238-toshihiro-kawachi",
-        "m-381-sin",
-        "m-501-taisuke",
-        "m-549-syuren",
         "m-578-shun",
-        "m-6-kisaki",
-        "m-608-tomo",
         "m-616-yayoi",
-        "m-617-takashi-ninokata",
-        "m-639-kazuya-umeda",
+        "m-6-kisaki",
         "m-830-yomi",
+        "m-608-tomo",
         "m-831-asahina-hina",
+        "m-549-syuren",
+        "m-2096-a-o-i",
+        "m-381-sin",
+        "m-3238-toshihiro-kawachi",
         "m-8358-kiyoshi",
+        "m-501-taisuke",
+        "m-617-takashi-ninokata",
+        "m-194-ryota",
         "m-847-k-suke",
-        "m-9887-ven"
+        "m-14694-matarow",
+        "m-639-kazuya-umeda",
+        "m-20970-kouki",
+        "m-9887-ven",
+        "m-297-hiro"
       ]
     },
     {
@@ -15072,12 +15072,12 @@
       "disbanded_year": 2017,
       "stub": false,
       "member_ids": [
-        "m-30327-kaya",
-        "m-3526-rin",
         "m-6489-rui",
-        "m-6491-kazuki",
         "m-6735-sawah",
+        "m-3526-rin",
         "m-6736-azami",
+        "m-6491-kazuki",
+        "m-30327-kaya",
         "m-6737-yusei",
         "m-7-mizuki"
       ]
@@ -15200,16 +15200,16 @@
       "disbanded_year": 2003,
       "stub": false,
       "member_ids": [
-        "m-161-shion",
-        "m-26-enya-tomoyuki",
-        "m-559-taka",
-        "m-759-kaine",
-        "m-760-ibuki",
-        "m-761-shizuna",
-        "m-762-dai",
-        "m-763-saki",
         "m-764-satsuki",
-        "m-765-aki"
+        "m-760-ibuki",
+        "m-26-enya-tomoyuki",
+        "m-161-shion",
+        "m-759-kaine",
+        "m-761-shizuna",
+        "m-763-saki",
+        "m-765-aki",
+        "m-559-taka",
+        "m-762-dai"
       ]
     },
     {
@@ -15245,13 +15245,13 @@
       "disbanded_year": 2009,
       "stub": false,
       "member_ids": [
+        "m-76-shino",
         "m-17439-youdai",
         "m-18373-marii",
-        "m-5050-u-ya",
-        "m-5593-mido",
         "m-6396-mei",
-        "m-76-shino",
-        "m-7747-shiun"
+        "m-5593-mido",
+        "m-7747-shiun",
+        "m-5050-u-ya"
       ]
     },
     {
@@ -15403,19 +15403,19 @@
       "disbanded_year": null,
       "stub": false,
       "member_ids": [
-        "m-10-yushi",
-        "m-1808-kiki",
-        "m-274-uemaa",
-        "m-30731-hanew",
         "m-3642-tajima-taketoshi",
-        "m-4608-taka",
         "m-5848-sho",
         "m-5850-shindou-kazuki",
+        "m-1808-kiki",
+        "m-4608-taka",
+        "m-10-yushi",
         "m-5852-ichinose-keita",
         "m-5853-kyouya",
+        "m-274-uemaa",
+        "m-639-kazuya-umeda",
         "m-5854-touya",
         "m-5855-hasegawa-tatsuya",
-        "m-639-kazuya-umeda"
+        "m-30731-hanew"
       ]
     },
     {
@@ -15639,16 +15639,16 @@
       "disbanded_year": null,
       "stub": false,
       "member_ids": [
-        "m-14323-yasuhiro-hagiwara",
-        "m-2112-neo",
-        "m-3963-kaname",
-        "m-4013-kou",
-        "m-4088-kouryuu",
-        "m-4089-tetsuya",
         "m-586-tenten",
+        "m-2112-neo",
+        "m-4013-kou",
         "m-589-higiri",
+        "m-14323-yasuhiro-hagiwara",
         "m-6385-daisuke",
-        "m-6386-ryou"
+        "m-4088-kouryuu",
+        "m-3963-kaname",
+        "m-6386-ryou",
+        "m-4089-tetsuya"
       ]
     },
     {
@@ -15722,8 +15722,8 @@
       "disbanded_year": null,
       "stub": false,
       "member_ids": [
-        "m-136-shio",
         "m-553-ryou",
+        "m-136-shio",
         "m-555-yoshi"
       ]
     },
@@ -15760,12 +15760,12 @@
       "disbanded_year": null,
       "stub": false,
       "member_ids": [
+        "m-9960-atto",
         "m-12452-mina",
-        "m-14561-yun",
-        "m-19944-masaki",
         "m-6378-fuki-konishi",
+        "m-19944-masaki",
         "m-9959-suga",
-        "m-9960-atto"
+        "m-14561-yun"
       ]
     },
     {
@@ -15791,13 +15791,13 @@
       "disbanded_year": null,
       "stub": false,
       "member_ids": [
+        "m-6676-yamaoki-rei",
         "m-2370-sarshi",
-        "m-48-chiyu",
-        "m-5230-ichirou",
         "m-5253-aki",
-        "m-5603-akihito-fujiwara",
+        "m-5230-ichirou",
+        "m-48-chiyu",
         "m-6310-jets",
-        "m-6676-yamaoki-rei"
+        "m-5603-akihito-fujiwara"
       ]
     },
     {
@@ -15833,10 +15833,10 @@
       "disbanded_year": 2011,
       "stub": false,
       "member_ids": [
-        "m-206-tera",
+        "m-9404-aoi",
         "m-4079-go",
         "m-6753-reki",
-        "m-9404-aoi"
+        "m-206-tera"
       ]
     },
     {
@@ -16013,9 +16013,9 @@
         "m-22719-izumi",
         "m-22720-tomoyasu",
         "m-22721-yoshinari",
-        "m-22722-satoshi",
+        "m-78-jin",
         "m-22723-maro",
-        "m-78-jin"
+        "m-22722-satoshi"
       ]
     },
     {
@@ -16113,12 +16113,12 @@
       "disbanded_year": 2007,
       "stub": false,
       "member_ids": [
+        "m-5120-yumeha",
         "m-1276-shiyuu",
         "m-221-mikage",
+        "m-9671-kano",
         "m-370-toki",
-        "m-5120-yumeha",
-        "m-5793-cray",
-        "m-9671-kano"
+        "m-5793-cray"
       ]
     },
     {
@@ -16302,10 +16302,10 @@
       "disbanded_year": 2001,
       "stub": false,
       "member_ids": [
-        "m-5239-yousei",
+        "m-934-tetsuya",
         "m-5240-yu-ya",
         "m-82-yuuri",
-        "m-934-tetsuya"
+        "m-5239-yousei"
       ]
     },
     {
@@ -16329,9 +16329,9 @@
       "disbanded_year": 2001,
       "stub": false,
       "member_ids": [
-        "m-7776-you-watanabe",
-        "m-7777-u1",
         "m-7778-den",
+        "m-7777-u1",
+        "m-7776-you-watanabe",
         "m-7779-hiroaki"
       ]
     },
@@ -16811,11 +16811,11 @@
       "disbanded_year": 2007,
       "stub": false,
       "member_ids": [
-        "m-158-sai",
         "m-160-io",
         "m-8-akito",
         "m-8135-hijiri",
-        "m-9-reiya"
+        "m-9-reiya",
+        "m-158-sai"
       ]
     },
     {
@@ -16899,12 +16899,12 @@
       "disbanded_year": 2010,
       "stub": false,
       "member_ids": [
-        "m-137-matoi",
+        "m-5-riku",
         "m-153-jun-jun",
         "m-154-iori-iori",
-        "m-161-shion",
-        "m-5-riku",
-        "m-6-kisaki"
+        "m-6-kisaki",
+        "m-137-matoi",
+        "m-161-shion"
       ]
     },
     {
@@ -17368,14 +17368,14 @@
       "disbanded_year": null,
       "stub": false,
       "member_ids": [
-        "m-10240-hiroki",
-        "m-16621-ju-ken",
-        "m-1825-kamijo",
-        "m-3035-masayuki-moriyama",
-        "m-33156-sho-hakii",
-        "m-3780-teruki",
         "m-461-shigure",
-        "m-6551-sono"
+        "m-1825-kamijo",
+        "m-6551-sono",
+        "m-3035-masayuki-moriyama",
+        "m-16621-ju-ken",
+        "m-10240-hiroki",
+        "m-3780-teruki",
+        "m-33156-sho-hakii"
       ]
     },
     {
@@ -17462,12 +17462,12 @@
       "stub": false,
       "member_ids": [
         "m-208-yamada-takafumi",
-        "m-221-mikage",
         "m-222-kirika",
+        "m-2750-laer",
         "m-223-sakura",
+        "m-221-mikage",
         "m-224-tomoya",
         "m-225-sumera",
-        "m-2750-laer",
         "m-449-kai"
       ]
     },
@@ -17625,11 +17625,11 @@
       "disbanded_year": 1999,
       "stub": false,
       "member_ids": [
+        "m-195-jui",
         "m-12614-kazuya",
         "m-12615-rin",
-        "m-12616-eishi",
-        "m-195-jui",
-        "m-2796-kiri"
+        "m-2796-kiri",
+        "m-12616-eishi"
       ]
     },
     {
@@ -17826,11 +17826,11 @@
       "disbanded_year": null,
       "stub": false,
       "member_ids": [
-        "m-11049-ikuo-shibutani",
-        "m-13646-masahiko-yuki",
         "m-3343-tazawa-takayuki",
-        "m-3774-keiichi-miyako",
-        "m-4601-sakura"
+        "m-13646-masahiko-yuki",
+        "m-11049-ikuo-shibutani",
+        "m-4601-sakura",
+        "m-3774-keiichi-miyako"
       ]
     },
     {
@@ -18015,10 +18015,10 @@
       "stub": false,
       "member_ids": [
         "m-52-rayka",
-        "m-60-akino",
         "m-62-ritsu",
-        "m-63-kazna",
-        "m-64-n-o"
+        "m-64-n-o",
+        "m-60-akino",
+        "m-63-kazna"
       ]
     },
     {
@@ -18116,10 +18116,10 @@
       "disbanded_year": null,
       "stub": false,
       "member_ids": [
-        "m-221-mikage",
-        "m-382-ruiza",
         "m-405-seiji",
-        "m-743-tsunehito"
+        "m-382-ruiza",
+        "m-743-tsunehito",
+        "m-221-mikage"
       ]
     },
     {
@@ -18131,10 +18131,10 @@
       "disbanded_year": 2010,
       "stub": false,
       "member_ids": [
-        "m-2112-neo",
-        "m-528-wataru",
         "m-6633-yoshito",
-        "m-7609-kai"
+        "m-2112-neo",
+        "m-7609-kai",
+        "m-528-wataru"
       ]
     },
     {
@@ -18255,11 +18255,11 @@
       "disbanded_year": 1999,
       "stub": false,
       "member_ids": [
-        "m-136-shio",
-        "m-19587-erika",
         "m-552-atsuki",
         "m-553-ryou",
+        "m-136-shio",
         "m-554-lamia",
+        "m-19587-erika",
         "m-555-yoshi",
         "m-786-kenji"
       ]
@@ -18505,9 +18505,9 @@
       "disbanded_year": 2004,
       "stub": false,
       "member_ids": [
-        "m-12493-mori",
-        "m-14890-you",
         "m-15505-takuya",
+        "m-14890-you",
+        "m-12493-mori",
         "m-15506-izu-2",
         "m-15507-seizou",
         "m-402-seiya",
@@ -18548,13 +18548,13 @@
       "disbanded_year": null,
       "stub": false,
       "member_ids": [
-        "m-17616-takuya-kusunose",
+        "m-98-yuuji",
         "m-36-suga-yuusuke",
         "m-460-tomo",
         "m-461-shigure",
-        "m-5368-yuji",
         "m-96-naruka",
-        "m-98-yuuji"
+        "m-17616-takuya-kusunose",
+        "m-5368-yuji"
       ]
     },
     {
@@ -18651,11 +18651,11 @@
       "stub": false,
       "member_ids": [
         "m-243-saica",
+        "m-62-ritsu",
+        "m-64-n-o",
         "m-25843-aki",
         "m-25844-sakuya",
-        "m-25845-akito",
-        "m-62-ritsu",
-        "m-64-n-o"
+        "m-25845-akito"
       ]
     },
     {
@@ -18667,19 +18667,19 @@
       "disbanded_year": null,
       "stub": false,
       "member_ids": [
-        "m-13646-masahiko-yuki",
-        "m-20432-wataru",
-        "m-2565-shin",
-        "m-26259-takatora",
-        "m-27076-jitan",
-        "m-2713-shinsaku",
         "m-5-riku",
+        "m-7288-ryo",
+        "m-64-n-o",
+        "m-20432-wataru",
+        "m-26259-takatora",
+        "m-7850-kenji-nagamatsu",
+        "m-13646-masahiko-yuki",
+        "m-27076-jitan",
+        "m-7776-you-watanabe",
         "m-5253-aki",
         "m-6339-sho",
-        "m-64-n-o",
-        "m-7288-ryo",
-        "m-7776-you-watanabe",
-        "m-7850-kenji-nagamatsu",
+        "m-2713-shinsaku",
+        "m-2565-shin",
         "m-9959-suga"
       ]
     },
@@ -18752,10 +18752,10 @@
       "disbanded_year": 2018,
       "stub": false,
       "member_ids": [
-        "m-20179-takahiko-suzuki",
         "m-5692-ryosuke-onari",
+        "m-7850-kenji-nagamatsu",
         "m-7776-you-watanabe",
-        "m-7850-kenji-nagamatsu"
+        "m-20179-takahiko-suzuki"
       ]
     },
     {
@@ -18779,12 +18779,12 @@
       "disbanded_year": null,
       "stub": false,
       "member_ids": [
-        "m-1025-setsuna",
-        "m-11-mizaly",
         "m-1217-juri",
-        "m-1219-noa",
         "m-12394-rin",
-        "m-1539-gazzy"
+        "m-1539-gazzy",
+        "m-11-mizaly",
+        "m-1025-setsuna",
+        "m-1219-noa"
       ]
     },
     {
@@ -19193,11 +19193,11 @@
       "disbanded_year": 2005,
       "stub": false,
       "member_ids": [
-        "m-139-mukku",
         "m-158-sai",
         "m-8-akito",
         "m-8135-hijiri",
-        "m-9-reiya"
+        "m-9-reiya",
+        "m-139-mukku"
       ]
     },
     {
@@ -19359,9 +19359,9 @@
       "stub": false,
       "member_ids": [
         "m-21406-yuma",
-        "m-6844-toru",
         "m-80-tomo",
-        "m-8481-frypan"
+        "m-8481-frypan",
+        "m-6844-toru"
       ]
     },
     {
@@ -19564,10 +19564,10 @@
       "stub": false,
       "member_ids": [
         "m-4482-retsu",
-        "m-4484-rio",
+        "m-936-zecks",
         "m-4485-chihiro",
-        "m-502-juya",
-        "m-936-zecks"
+        "m-4484-rio",
+        "m-502-juya"
       ]
     },
     {
@@ -19749,15 +19749,15 @@
       "disbanded_year": 2019,
       "stub": false,
       "member_ids": [
-        "m-1303-kaei",
-        "m-2180-yagi",
-        "m-2786-haren",
-        "m-504-takeru",
         "m-6749-ryuka",
+        "m-504-takeru",
         "m-6750-jun",
+        "m-2180-yagi",
         "m-6751-luu",
         "m-6752-enya",
-        "m-78-jin"
+        "m-78-jin",
+        "m-2786-haren",
+        "m-1303-kaei"
       ]
     },
     {
@@ -19916,13 +19916,13 @@
       "disbanded_year": 2005,
       "stub": false,
       "member_ids": [
-        "m-2790-reeno",
+        "m-886-miki",
         "m-3683-grif",
-        "m-743-tsunehito",
         "m-76-shino",
-        "m-7746-seiichi",
+        "m-743-tsunehito",
         "m-7747-shiun",
-        "m-886-miki"
+        "m-2790-reeno",
+        "m-7746-seiichi"
       ]
     },
     {
@@ -19995,10 +19995,10 @@
       "stub": false,
       "member_ids": [
         "m-13123-shin",
-        "m-13126-rui",
-        "m-13127-hiro",
+        "m-154-iori-iori",
         "m-153-jun-jun",
-        "m-154-iori-iori"
+        "m-13126-rui",
+        "m-13127-hiro"
       ]
     },
     {
@@ -20010,10 +20010,10 @@
       "disbanded_year": 2002,
       "stub": false,
       "member_ids": [
-        "m-11639-kou",
-        "m-12082-leona",
         "m-6421-daina",
-        "m-82-yuuri"
+        "m-12082-leona",
+        "m-82-yuuri",
+        "m-11639-kou"
       ]
     },
     {
@@ -20025,13 +20025,13 @@
       "disbanded_year": null,
       "stub": false,
       "member_ids": [
-        "m-2114-reishi",
-        "m-2116-enju",
         "m-2562-mirai",
-        "m-2565-shin",
-        "m-2566-hinata",
+        "m-491-kyoki",
+        "m-2114-reishi",
         "m-2986-rio",
-        "m-491-kyoki"
+        "m-2116-enju",
+        "m-2566-hinata",
+        "m-2565-shin"
       ]
     },
     {
@@ -20118,14 +20118,14 @@
       "disbanded_year": 2016,
       "stub": false,
       "member_ids": [
-        "m-12514-tsubaki",
         "m-18048-ryuga",
+        "m-12514-tsubaki",
+        "m-7064-takuma",
         "m-21519-manji",
         "m-3790-tora",
-        "m-562-john",
         "m-6321-nagi",
-        "m-6523-sujk",
-        "m-7064-takuma"
+        "m-562-john",
+        "m-6523-sujk"
       ]
     },
     {
@@ -20199,9 +20199,9 @@
       "disbanded_year": 2001,
       "stub": false,
       "member_ids": [
-        "m-13356-jin",
         "m-22174-rei",
         "m-22175-ayano",
+        "m-13356-jin",
         "m-79-kentz"
       ]
     },
@@ -20372,11 +20372,11 @@
       "disbanded_year": 2017,
       "stub": false,
       "member_ids": [
-        "m-126-majyu-lee-aki",
-        "m-1542-junya",
         "m-405-seiji",
         "m-406-tomozo",
         "m-459-igarashi-takuya",
+        "m-1542-junya",
+        "m-126-majyu-lee-aki",
         "m-7649-mokichi",
         "m-78-jin"
       ]
@@ -20488,13 +20488,13 @@
       "disbanded_year": null,
       "stub": false,
       "member_ids": [
-        "m-136-shio",
-        "m-175-yu",
+        "m-295-james-godfield",
+        "m-506-hidaka",
         "m-285-pepa",
         "m-288-nayu",
-        "m-289-seiji-narita",
-        "m-295-james-godfield",
-        "m-506-hidaka"
+        "m-136-shio",
+        "m-175-yu",
+        "m-289-seiji-narita"
       ]
     },
     {
@@ -20518,12 +20518,12 @@
       "disbanded_year": 1994,
       "stub": false,
       "member_ids": [
-        "m-136-shio",
         "m-3209-yuma",
         "m-3210-hikaru",
+        "m-6-kisaki",
         "m-583-kyuuchan",
-        "m-584-myo",
-        "m-6-kisaki"
+        "m-136-shio",
+        "m-584-myo"
       ]
     },
     {
@@ -20717,11 +20717,11 @@
       "disbanded_year": 2005,
       "stub": false,
       "member_ids": [
-        "m-11037-ren",
         "m-5113-kaito",
-        "m-5114-yu-ichi",
+        "m-9839-sae",
         "m-6321-nagi",
-        "m-9839-sae"
+        "m-11037-ren",
+        "m-5114-yu-ichi"
       ]
     },
     {
@@ -20894,10 +20894,10 @@
       "stub": false,
       "member_ids": [
         "m-5515-yuki",
+        "m-76-shino",
         "m-5516-hide",
         "m-5517-takashi",
-        "m-5518-koma",
-        "m-76-shino"
+        "m-5518-koma"
       ]
     },
     {
@@ -21203,9 +21203,9 @@
       "disbanded_year": 2002,
       "stub": false,
       "member_ids": [
-        "m-136-shio",
         "m-785-hisatoyo",
         "m-786-kenji",
+        "m-136-shio",
         "m-787-yuu"
       ]
     },
@@ -21230,10 +21230,10 @@
       "disbanded_year": 2004,
       "stub": false,
       "member_ids": [
-        "m-2889-ryu",
         "m-376-reika",
-        "m-5253-aki",
-        "m-6310-jets"
+        "m-6310-jets",
+        "m-2889-ryu",
+        "m-5253-aki"
       ]
     },
     {
@@ -21320,10 +21320,10 @@
       "disbanded_year": null,
       "stub": false,
       "member_ids": [
-        "m-1041-hiroki",
-        "m-136-shio",
         "m-298-kazumi",
-        "m-534-ma-na"
+        "m-136-shio",
+        "m-534-ma-na",
+        "m-1041-hiroki"
       ]
     },
     {
@@ -21408,13 +21408,13 @@
       "disbanded_year": 2019,
       "stub": false,
       "member_ids": [
-        "m-16805-haru",
-        "m-27315-ryuichi",
         "m-6280-takuya",
+        "m-16805-haru",
         "m-6355-atsu",
-        "m-6356-ritsu",
-        "m-6395-lilyel",
+        "m-27315-ryuichi",
         "m-6397-shouto",
+        "m-6395-lilyel",
+        "m-6356-ritsu",
         "m-6585-seiya"
       ]
     },
@@ -21549,13 +21549,13 @@
       "stub": false,
       "member_ids": [
         "m-153-jun-jun",
-        "m-154-iori-iori",
-        "m-371-sala",
-        "m-402-seiya",
         "m-6321-nagi",
-        "m-6585-seiya",
         "m-6897-ryo",
-        "m-936-zecks"
+        "m-154-iori-iori",
+        "m-402-seiya",
+        "m-936-zecks",
+        "m-6585-seiya",
+        "m-371-sala"
       ]
     },
     {
@@ -21652,16 +21652,16 @@
       "disbanded_year": 1999,
       "stub": false,
       "member_ids": [
-        "m-3505-mesh",
-        "m-529-ray",
+        "m-537-tsurugi",
         "m-530-four",
-        "m-531-seine",
         "m-532-takashi",
-        "m-533-naoya",
-        "m-534-ma-na",
+        "m-529-ray",
+        "m-531-seine",
         "m-535-seiya",
         "m-536-jun",
-        "m-537-tsurugi",
+        "m-3505-mesh",
+        "m-533-naoya",
+        "m-534-ma-na",
         "m-6-kisaki"
       ]
     },
@@ -21796,13 +21796,13 @@
       "disbanded_year": null,
       "stub": false,
       "member_ids": [
-        "m-2565-shin",
         "m-4005-takeru",
         "m-4065-masato",
         "m-4066-yuji",
-        "m-4318-mitsuru",
+        "m-48-chiyu",
+        "m-2565-shin",
         "m-4319-sh-ta",
-        "m-48-chiyu"
+        "m-4318-mitsuru"
       ]
     },
     {
@@ -21874,13 +21874,13 @@
       "disbanded_year": null,
       "stub": false,
       "member_ids": [
-        "m-124-haruka",
-        "m-126-majyu-lee-aki",
         "m-13-sui",
         "m-166-iori",
+        "m-124-haruka",
         "m-1675-toshi",
-        "m-2484-you",
+        "m-126-majyu-lee-aki",
         "m-513-erina",
+        "m-2484-you",
         "m-6787-denka"
       ]
     },
@@ -22089,13 +22089,13 @@
       "disbanded_year": 2002,
       "stub": false,
       "member_ids": [
+        "m-385-asagi",
         "m-381-sin",
         "m-382-ruiza",
-        "m-383-shion",
-        "m-384-ken",
-        "m-385-asagi",
         "m-6-kisaki",
-        "m-66-pami"
+        "m-383-shion",
+        "m-66-pami",
+        "m-384-ken"
       ]
     },
     {
@@ -22337,9 +22337,9 @@
       "disbanded_year": 2004,
       "stub": false,
       "member_ids": [
-        "m-19452-satoshi-inoue",
+        "m-7850-kenji-nagamatsu",
         "m-5368-yuji",
-        "m-7850-kenji-nagamatsu"
+        "m-19452-satoshi-inoue"
       ]
     },
     {
@@ -22590,10 +22590,10 @@
       "stub": false,
       "member_ids": [
         "m-19775-minoru",
+        "m-7850-kenji-nagamatsu",
         "m-3985-yuchi",
         "m-5368-yuji",
-        "m-7776-you-watanabe",
-        "m-7850-kenji-nagamatsu"
+        "m-7776-you-watanabe"
       ]
     },
     {
@@ -22667,14 +22667,14 @@
       "disbanded_year": 2007,
       "stub": false,
       "member_ids": [
-        "m-10902-yukia",
-        "m-2772-hayato",
-        "m-5489-izumi",
-        "m-642-ren",
+        "m-8481-frypan",
         "m-7533-rui",
         "m-80-tomo",
         "m-81-roki",
-        "m-8481-frypan"
+        "m-5489-izumi",
+        "m-10902-yukia",
+        "m-642-ren",
+        "m-2772-hayato"
       ]
     },
     {
@@ -22773,13 +22773,13 @@
       "disbanded_year": 2010,
       "stub": false,
       "member_ids": [
-        "m-5072-taku",
-        "m-5073-naruto",
-        "m-5920-kamiki-mihal",
-        "m-6214-natsume",
         "m-6896-sally",
         "m-6897-ryo",
-        "m-6898-saya"
+        "m-5072-taku",
+        "m-5073-naruto",
+        "m-6898-saya",
+        "m-5920-kamiki-mihal",
+        "m-6214-natsume"
       ]
     },
     {
@@ -23207,13 +23207,13 @@
       "disbanded_year": null,
       "stub": false,
       "member_ids": [
-        "m-17442-di",
-        "m-22387-taca",
-        "m-461-shigure",
         "m-7321-takashi-genouzono",
+        "m-22387-taca",
         "m-7323-yuhki",
+        "m-17442-di",
         "m-7325-yoko",
-        "m-7898-ryo"
+        "m-7898-ryo",
+        "m-461-shigure"
       ]
     },
     {
@@ -23250,13 +23250,13 @@
       "disbanded_year": null,
       "stub": false,
       "member_ids": [
-        "m-20349-hal",
-        "m-25177-syu",
-        "m-25178-hiro",
+        "m-6521-yui",
         "m-6338-syu",
+        "m-20349-hal",
         "m-6339-sho",
-        "m-639-kazuya-umeda",
-        "m-6521-yui"
+        "m-25178-hiro",
+        "m-25177-syu",
+        "m-639-kazuya-umeda"
       ]
     },
     {
@@ -23417,14 +23417,14 @@
       "disbanded_year": 2011,
       "stub": false,
       "member_ids": [
+        "m-5137-yuuki",
         "m-10047-zoma",
         "m-10357-testu",
-        "m-1542-junya",
-        "m-4976-mst",
-        "m-5137-yuuki",
-        "m-6075-rai",
         "m-78-jin",
-        "m-916-sho"
+        "m-916-sho",
+        "m-6075-rai",
+        "m-4976-mst",
+        "m-1542-junya"
       ]
     },
     {
@@ -23746,10 +23746,10 @@
       "disbanded_year": null,
       "stub": false,
       "member_ids": [
-        "m-2112-neo",
         "m-24542-mahiro",
         "m-24543-ry-ma",
-        "m-24544-junya"
+        "m-24544-junya",
+        "m-2112-neo"
       ]
     },
     {
@@ -23761,12 +23761,12 @@
       "disbanded_year": 2000,
       "stub": false,
       "member_ids": [
-        "m-31870-ken",
-        "m-31871-tomoya",
-        "m-6865-sasabuchi-hiroshi",
-        "m-7776-you-watanabe",
+        "m-7778-den",
         "m-7777-u1",
-        "m-7778-den"
+        "m-7776-you-watanabe",
+        "m-6865-sasabuchi-hiroshi",
+        "m-31870-ken",
+        "m-31871-tomoya"
       ]
     },
     {
@@ -23912,10 +23912,10 @@
       "member_ids": [
         "m-1021-shaura",
         "m-1081-rayx",
-        "m-221-mikage",
-        "m-450-kaz",
         "m-513-erina",
-        "m-514-masato"
+        "m-450-kaz",
+        "m-514-masato",
+        "m-221-mikage"
       ]
     },
     {
@@ -23991,11 +23991,11 @@
       "disbanded_year": 2008,
       "stub": false,
       "member_ids": [
-        "m-402-seiya",
+        "m-6321-nagi",
         "m-5114-yu-ichi",
+        "m-402-seiya",
         "m-5191-keita",
-        "m-6320-kei",
-        "m-6321-nagi"
+        "m-6320-kei"
       ]
     },
     {
@@ -24019,19 +24019,19 @@
       "disbanded_year": null,
       "stub": false,
       "member_ids": [
-        "m-20379-ko-hei",
         "m-3038-kenji-roa",
-        "m-3265-daichi",
-        "m-4485-chihiro",
-        "m-5050-u-ya",
-        "m-5289-haruki",
         "m-5290-takato",
         "m-5291-ruta",
-        "m-5292-asa",
-        "m-5293-kei",
-        "m-5294-takumi",
+        "m-20379-ko-hei",
+        "m-5050-u-ya",
         "m-6417-yuji-nakanishi",
-        "m-936-zecks"
+        "m-5289-haruki",
+        "m-5293-kei",
+        "m-4485-chihiro",
+        "m-3265-daichi",
+        "m-5292-asa",
+        "m-936-zecks",
+        "m-5294-takumi"
       ]
     },
     {
@@ -24315,11 +24315,11 @@
       "member_ids": [
         "m-11030-hisaki",
         "m-11031-kyouei",
+        "m-418-kanna",
         "m-11032-hotaru",
         "m-11033-kai",
         "m-11034-tarou",
-        "m-11035-shin",
-        "m-418-kanna"
+        "m-11035-shin"
       ]
     },
     {
@@ -24343,9 +24343,9 @@
       "disbanded_year": null,
       "stub": false,
       "member_ids": [
-        "m-12943-tomo",
-        "m-16533-u",
         "m-320-ryu",
+        "m-16533-u",
+        "m-12943-tomo",
         "m-6339-sho"
       ]
     },
@@ -24701,9 +24701,9 @@
       "stub": false,
       "member_ids": [
         "m-2178-yukito",
-        "m-2180-yagi",
         "m-504-takeru",
-        "m-9809-zun"
+        "m-9809-zun",
+        "m-2180-yagi"
       ]
     },
     {
@@ -24793,10 +24793,10 @@
         "m-67-asami",
         "m-68-kyohei",
         "m-69-yuki",
+        "m-72-ken",
         "m-6904-yamato",
-        "m-70-you",
         "m-71-reizi",
-        "m-72-ken"
+        "m-70-you"
       ]
     },
     {

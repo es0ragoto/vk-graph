@@ -26,11 +26,18 @@ export function expandWithMusicianPath(visible: Set<string>, musicianId: string,
 
 /** "Entire graph" means the real, fully-crawled bands - not every stub pulled in as a
  * career-path endpoint for some musician (which can vastly outnumber the real set).
- * Stubs still surface contextually via expandWithMusicianPath when a path leads to one. */
+ * Stubs still surface contextually via expandWithMusicianPath when a path leads to one,
+ * or all at once when the "show stub bands" display setting is on (see allBandIds). */
 export function allRealBandIds(index: GraphIndex): Set<string> {
   const result = new Set<string>();
   for (const [id, band] of index.bandsById) {
     if (!band.stub) result.add(id);
   }
   return result;
+}
+
+/** Every band, crawled or stub - the opt-in "show stub bands" view, for getting a sense of
+ * how the crawled set connects to the wider scene beyond it. */
+export function allBandIds(index: GraphIndex): Set<string> {
+  return new Set(index.bandsById.keys());
 }

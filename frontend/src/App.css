@@ -38,8 +38,19 @@
   padding: 1rem;
 }
 
+.toolbar {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
 .show-all-btn {
   align-self: flex-start;
+}
+
+.back-btn:disabled {
+  opacity: 0.4;
+  cursor: default;
 }
 
 .legend {
@@ -87,6 +98,14 @@
 .settings-value {
   opacity: 0.65;
   font-variant-numeric: tabular-nums;
+}
+
+.settings-checkbox-row {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.8rem;
+  opacity: 0.9;
 }
 
 .settings-reset {
@@ -191,7 +210,9 @@
 
 .career-list {
   list-style: decimal;
-  padding-left: 1.1rem;
+  /* Wide enough for double-digit era numbers (10.-99.) - some careers run that long -
+     without which the leading digit gets clipped by the panel's overflow. */
+  padding-left: 1.8rem;
 }
 
 .link-button {

@@ -7,10 +7,12 @@ from scraper.export import build_graph, validate_graph
 def make_state() -> CrawlState:
     state = CrawlState()
     state.referenced_band_urls = {
-        "https://vk.gy/artists/a/", "https://vk.gy/artists/b/", "https://vk.gy/artists/c/",
+        "https://vk.gy/artists/a/", "https://vk.gy/artists/b/", "https://vk.gy/artists/c/", "https://vk.gy/artists/d/",
     }
     state.referenced_musician_urls = {
         "https://vk.gy/musicians/1/alice/", "https://vk.gy/musicians/2/bob/", "https://vk.gy/musicians/3/carol/",
+        "https://vk.gy/musicians/4/dora/", "https://vk.gy/musicians/5/eve/", "https://vk.gy/musicians/6/frank/",
+        "https://vk.gy/musicians/7/amy/", "https://vk.gy/musicians/8/zoe/",
     }
     state.bands = {
         "https://vk.gy/artists/a/": {
@@ -34,6 +36,27 @@ def make_state() -> CrawlState:
             "former_members": [],
         },
         # Band C is intentionally absent here (referenced but never fetched) -> becomes a stub.
+        # Mirrors a real long-running band (e.g. Chariots) with several current members and
+        # many more former ones, listed in neither alphabetical nor id order - a stand-in
+        # for the site's own page order, which member_ids must preserve.
+        "https://vk.gy/artists/d/": {
+            "name": "Band D", "name_native": None, "url": "https://vk.gy/artists/d/",
+            "formed_year": 2003, "disbanded_year": None, "area": None, "status": "active",
+            "members": [
+                {"name": "Dora", "name_native": None, "musician_url": "https://vk.gy/musicians/4/dora/",
+                 "instrument": "vocals", "raw_date_text": None},
+                {"name": "Eve", "name_native": None, "musician_url": "https://vk.gy/musicians/5/eve/",
+                 "instrument": "guitar", "raw_date_text": None},
+            ],
+            "former_members": [
+                {"name": "Frank", "name_native": None, "musician_url": "https://vk.gy/musicians/6/frank/",
+                 "instrument": "bass", "raw_date_text": None},
+                {"name": "Amy", "name_native": None, "musician_url": "https://vk.gy/musicians/7/amy/",
+                 "instrument": "drums", "raw_date_text": None},
+                {"name": "Zoe", "name_native": None, "musician_url": "https://vk.gy/musicians/8/zoe/",
+                 "instrument": "guitar", "raw_date_text": None},
+            ],
+        },
     }
     state.musicians = {
         "https://vk.gy/musicians/1/alice/": {
@@ -72,6 +95,36 @@ def make_state() -> CrawlState:
                 {"era_index": 5, "band_name": "Band C", "band_url": "https://vk.gy/artists/c/",
                  "instrument": None, "start_year": None, "end_year": None},
             ],
+        },
+        "https://vk.gy/musicians/4/dora/": {
+            "name": "Dora", "name_native": None, "url": "https://vk.gy/musicians/4/dora/",
+            "bio": None, "usual_position": "vocals",
+            "career": [{"era_index": 1, "band_name": "Band D", "band_url": "https://vk.gy/artists/d/",
+                        "instrument": None, "start_year": None, "end_year": None}],
+        },
+        "https://vk.gy/musicians/5/eve/": {
+            "name": "Eve", "name_native": None, "url": "https://vk.gy/musicians/5/eve/",
+            "bio": None, "usual_position": "guitar",
+            "career": [{"era_index": 1, "band_name": "Band D", "band_url": "https://vk.gy/artists/d/",
+                        "instrument": None, "start_year": None, "end_year": None}],
+        },
+        "https://vk.gy/musicians/6/frank/": {
+            "name": "Frank", "name_native": None, "url": "https://vk.gy/musicians/6/frank/",
+            "bio": None, "usual_position": "bass",
+            "career": [{"era_index": 1, "band_name": "Band D", "band_url": "https://vk.gy/artists/d/",
+                        "instrument": None, "start_year": None, "end_year": None}],
+        },
+        "https://vk.gy/musicians/7/amy/": {
+            "name": "Amy", "name_native": None, "url": "https://vk.gy/musicians/7/amy/",
+            "bio": None, "usual_position": "drums",
+            "career": [{"era_index": 1, "band_name": "Band D", "band_url": "https://vk.gy/artists/d/",
+                        "instrument": None, "start_year": None, "end_year": None}],
+        },
+        "https://vk.gy/musicians/8/zoe/": {
+            "name": "Zoe", "name_native": None, "url": "https://vk.gy/musicians/8/zoe/",
+            "bio": None, "usual_position": "guitar",
+            "career": [{"era_index": 1, "band_name": "Band D", "band_url": "https://vk.gy/artists/d/",
+                        "instrument": None, "start_year": None, "end_year": None}],
         },
     }
     return state
@@ -128,6 +181,14 @@ class TestBuildGraph(unittest.TestCase):
         # sequence_index must be a clean 0..N-1 over the edges that actually exist, not
         # the raw era position (which would otherwise skip a number at the gap).
         self.assertEqual([edges_by_id[eid]["sequence_index"] for eid in carol["edge_ids"]], [0, 1])
+
+    def test_band_members_ordered_current_then_former(self):
+        band_d = next(b for b in self.graph["bands"] if b["name"] == "Band D")
+        ids_by_name = {m["name"]: m["id"] for m in self.graph["musicians"]}
+        # Current members (page order), then former members (page order) - not alphabetical,
+        # and not grouped any other way.
+        expected = [ids_by_name[n] for n in ["Dora", "Eve", "Frank", "Amy", "Zoe"]]
+        self.assertEqual(band_d["member_ids"], expected)
 
 
 class TestValidateGraph(unittest.TestCase):

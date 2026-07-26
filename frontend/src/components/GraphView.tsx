@@ -13,6 +13,11 @@ interface GraphViewProps {
   incomingEdgeIds: Set<string>;
   outgoingEdgeIds: Set<string>;
   fadeOthers: boolean;
+  // Ticks on every "clear selection" action (Show all, closing a panel), even when the
+  // selection was already null and thus wouldn't otherwise produce a new prop value below -
+  // see useSelection.ts. Only consumed to force the fit effect to re-run; the value itself
+  // is meaningless.
+  resetToken: number;
   settings: GraphSettings;
   onSelectBand: (bandId: string) => void;
   onSelectEdge: (edgeId: string) => void;
@@ -120,6 +125,7 @@ export default function GraphView({
   incomingEdgeIds,
   outgoingEdgeIds,
   fadeOthers,
+  resetToken,
   settings,
   onSelectBand,
   onSelectEdge,
@@ -141,6 +147,10 @@ export default function GraphView({
   // stubs, adding none) can be told apart from an actual spacing-slider change - both
   // reach the "no new ids" branch, but only the latter should trigger a re-layout.
   const previousSpacingRef = useRef(settings.layoutSpacing);
+  // Toggling "show stub bands" can add or remove well over a thousand nodes at once - too
+  // big for the small per-click fan-out treatment below, so it gets its own full-relayout
+  // path (with a fit, since the visible extent just changed drastically either way).
+  const previousShowStubsRef = useRef(settings.showStubs);
 
   const elements = useMemo<cytoscape.ElementDefinition[]>(() => {
     const nodeEls: cytoscape.ElementDefinition[] = graph.bands
@@ -170,14 +180,25 @@ export default function GraphView({
 
       if (!hasFittedOnceRef.current) {
         // Initial load: arrange everything and frame the camera once.
+        cy.resize();
         cy.layout(buildLayoutOptions(settings.layoutSpacing, true)).run();
         hasFittedOnceRef.current = true;
         previousNodeIdsRef.current = currentIds;
         return;
       }
 
+      const showStubsChanged = previousShowStubsRef.current !== settings.showStubs;
+      previousShowStubsRef.current = settings.showStubs;
       const newIds = [...currentIds].filter((id) => !previousNodeIdsRef.current.has(id));
-      if (newIds.length > 0) {
+
+      if (showStubsChanged) {
+        // Toggling stub bands on/off can add or remove well over a thousand nodes in one
+        // go - the per-click fan-out below is meant for a handful of revealed stubs, not a
+        // graph-reshaping change like this, so treat it like a full re-layout instead
+        // (with a fit, since "how much graph there is" just changed drastically).
+        cy.resize();
+        cy.layout(buildLayoutOptions(settings.layoutSpacing, true)).run();
+      } else if (newIds.length > 0) {
         // A click revealed new node(s). Don't re-run the simulation at all - it would
         // shift already-visible nodes even without touching the camera. Instead, drop
         // each new node next to an already-positioned neighbor (falling back to the
@@ -229,7 +250,7 @@ export default function GraphView({
       previousNodeIdsRef.current = currentIds;
     }, LAYOUT_DEBOUNCE_MS);
     return () => clearTimeout(handle);
-  }, [elements, settings.layoutSpacing]);
+  }, [elements, settings.layoutSpacing, settings.showStubs]);
 
   useEffect(() => {
     const cy = cyRef.current;
@@ -273,12 +294,21 @@ export default function GraphView({
       // highlighted, since a path edge's endpoints are themselves already path bands.
       const relevantEdges = cy.edges('.highlighted, .highlighted-incoming, .highlighted-outgoing');
       const toFit = relevantEdges.union(relevantEdges.connectedNodes()).union(cy.nodes('.highlighted'));
-      if (toFit.length > 0) {
-        cy.animate({ fit: { eles: toFit, padding: 80 } }, { duration: 300 });
+      // Nothing selected (e.g. "Show all" was just clicked, or a panel got closed) - frame
+      // the whole current graph instead of leaving the camera wherever it was left over
+      // from a previous selection.
+      const fitTarget = toFit.length > 0 ? toFit : cy.elements();
+      if (fitTarget.length > 0) {
+        // cy.animate({fit}) computes its target zoom/pan from a container size that only
+        // gets refreshed on an explicit resize() - without this, fitting shortly after the
+        // pane was resized (e.g. the browser window) uses the pre-resize size and leaves
+        // part of the graph outside the actual viewport.
+        cy.resize();
+        cy.animate({ fit: { eles: fitTarget, padding: 80 } }, { duration: 300 });
       }
     }, LAYOUT_DEBOUNCE_MS);
     return () => clearTimeout(handle);
-  }, [highlightedBandIds, highlightedEdgeIds, incomingEdgeIds, outgoingEdgeIds, fadeOthers, elements]);
+  }, [highlightedBandIds, highlightedEdgeIds, incomingEdgeIds, outgoingEdgeIds, fadeOthers, elements, resetToken]);
 
   return (
     <CytoscapeComponent
@@ -292,6 +322,15 @@ export default function GraphView({
         cyRef.current = cy;
         cy.on('tap', 'node', (evt) => onSelectBandRef.current(evt.target.id()));
         cy.on('tap', 'edge', (evt) => onSelectEdgeRef.current(evt.target.id()));
+        // Cytoscape caches its container's dimensions and only re-measures them on an
+        // explicit cy.resize() call - without this, fit()/animate({fit}) after the browser
+        // window (or this pane) has been resized computes zoom/pan against the old size,
+        // leaving part of the graph outside the actual viewport.
+        const container = cy.container();
+        if (container) {
+          const observer = new ResizeObserver(() => cy.resize());
+          observer.observe(container);
+        }
       }}
     />
   );

@@ -47,6 +47,14 @@ export default function DisplaySettingsPanel({ settings, onChange }: DisplaySett
             />
           </label>
         ))}
+        <label className="settings-checkbox-row">
+          <input
+            type="checkbox"
+            checked={settings.showStubs}
+            onChange={(e) => onChange({ ...settings, showStubs: e.target.checked })}
+          />
+          Show stub bands (referenced but not fully crawled)
+        </label>
         <button className="settings-reset" onClick={() => onChange(DEFAULT_GRAPH_SETTINGS)}>
           Reset to defaults
         </button>
